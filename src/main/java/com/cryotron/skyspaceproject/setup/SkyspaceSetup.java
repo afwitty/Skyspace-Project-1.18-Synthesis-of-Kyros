@@ -41,6 +41,9 @@ public class SkyspaceSetup {
             return new ItemStack(Items.DIAMOND);
         }
     };
+    
+    // Test
+    
      
     public static void preInit() {
 		IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
