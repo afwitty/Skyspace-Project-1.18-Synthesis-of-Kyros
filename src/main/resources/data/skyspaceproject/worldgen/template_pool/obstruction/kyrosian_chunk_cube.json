@@ -1,0 +1,22 @@
+{
+  "name": "skyspaceproject:obstruction/kyrosian_chunk_cube",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 50,
+      "element": {
+        "location": "skyspaceproject:obstruction/kyrosian_chunk_cube",
+        "processors": "minecraft:empty",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      },
+      "weight": 50,
+      "element": {
+        "location": "skyspaceproject:obstruction/kyrosian_chunk_cube",
+        "processors": "minecraft:empty",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

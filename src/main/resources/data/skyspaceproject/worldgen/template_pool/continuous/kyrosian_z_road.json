@@ -1,0 +1,24 @@
+{
+  "name": "skyspaceproject:continous/kyrosian_z_road",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 80,
+      "element": {
+        "location": "skyspaceproject:continuous/kyrosian_z_road",
+        "processors": "minecraft:empty",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+	{	
+      "weight": 40,
+      "element": {
+        "location": "skyspaceproject:continuous/kyrosian_z_road",
+        "processors": "minecraft:empty",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+   ]
+}

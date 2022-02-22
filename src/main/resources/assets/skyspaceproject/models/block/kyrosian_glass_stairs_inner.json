@@ -1,0 +1,9 @@
+
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "side": "skyspaceproject:block/kyrosian_glass_block",
+    "bottom": "skyspaceproject:block/kyrosian_glass_block",
+    "top": "skyspaceproject:block/kyrosian_glass_block"
+  }
+}

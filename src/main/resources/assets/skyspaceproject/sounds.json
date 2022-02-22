@@ -1,0 +1,86 @@
+{
+	"entity.synthesized_zombie.ambient": {
+		"subtitle": "subtitle.entity.synthesizedzombie.ambient",
+		"sounds": [
+			"skyspaceproject:entity/synthesized_zombie/ambient1",
+			"skyspaceproject:entity/synthesized_zombie/ambient2",
+			"skyspaceproject:entity/synthesized_zombie/ambient3"
+		]
+	},
+	"entity.synthesized_zombie.death": {
+		"subtitle": "subtitle.entity.synthesizedzombie.ambient",
+		"sounds": [
+			"skyspaceproject:entity/synthesized_zombie/death"
+		]
+	},
+	"entity.synthesized_zombie.hurt": {
+		"subtitle": "subtitle.entity.synthesizedzombie.hurt",
+		"sounds": [
+			"skyspaceproject:entity/synthesized_zombie/hurt1",
+			"skyspaceproject:entity/synthesized_zombie/hurt2"
+		]
+	},
+	"entity.synthesized_zombie.step": {
+		"subtitle": "subtitle.entity.synthesizedzombie.step",
+		"sounds": [
+			"skyspaceproject:entity/synthesized_zombie/step1",
+			"skyspaceproject:entity/synthesized_zombie/step2",
+			"skyspaceproject:entity/synthesized_zombie/step3",
+			"skyspaceproject:entity/synthesized_zombie/step4",
+			"skyspaceproject:entity/synthesized_zombie/step5"
+		]
+	},
+	
+		"entity.synthesized_skeleton.ambient": {
+		"subtitle": "subtitle.entity.synthesizedzombie.ambient",
+		"sounds": [
+			"skyspaceproject:entity/synthesized_skeleton/ambient1",
+			"skyspaceproject:entity/synthesized_skeleton/ambient2",
+			"skyspaceproject:entity/synthesized_skeleton/ambient3",
+			"skyspaceproject:entity/synthesized_skeleton/ambient4"
+		]
+	},
+	"entity.synthesized_skeleton.death": {
+		"subtitle": "subtitle.entity.synthesizedzombie.ambient",
+		"sounds": [
+			"skyspaceproject:entity/synthesized_skeleton/death1",
+			"skyspaceproject:entity/synthesized_skeleton/death2"
+		]
+	},
+	"entity.synthesized_skeleton.hurt": {
+		"subtitle": "subtitle.entity.synthesizedzombie.hurt",
+		"sounds": [
+			"skyspaceproject:entity/synthesized_skeleton/hurt1",
+			"skyspaceproject:entity/synthesized_skeleton/hurt2",
+			"skyspaceproject:entity/synthesized_skeleton/hurt3",
+			"skyspaceproject:entity/synthesized_skeleton/hurt4"
+		]
+	},
+	"entity.synthesized_skeleton.step": {
+		"subtitle": "subtitle.entity.synthesizedzombie.step",
+		"sounds": [
+			"skyspaceproject:entity/synthesized_skeleton/step1",
+			"skyspaceproject:entity/synthesized_skeleton/step2",
+			"skyspaceproject:entity/synthesized_skeleton/step3",
+			"skyspaceproject:entity/synthesized_skeleton/step4"
+		]
+	},	
+	"ambient.kyrosloop": {
+		"subtitle": "subtitle.ambient.kyrosloop",
+		"sounds": [
+			"skyspaceproject:ambient/kyrosloop"
+		]
+	},
+	"music.kyrosmusic": {
+		"sounds": [
+			{
+				"name": "skyspaceproject:music/kyros1",
+				"stream": true
+			},
+			{
+				"name": "skyspaceproject:music/kyros2",
+				"stream": true
+			}	
+		]
+	}
+}

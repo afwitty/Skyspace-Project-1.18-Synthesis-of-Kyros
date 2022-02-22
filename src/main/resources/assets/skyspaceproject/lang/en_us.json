@@ -1,0 +1,21 @@
+{
+  "item.skyspaceproject.synthesized_zombie": "Synthesized Zombie Spawn Egg",
+  "item.skyspaceproject.synthesized_skeleton": "Synthesized Skeleton Spawn Egg",
+
+  "block.skyspaceproject.kyrosian_tile_block": "Kyrosian Tile Block",
+  "block.skyspaceproject.kyrosian_glass_block": "Kyrosian Glass Block",
+  "block.skyspaceproject.kyrosian_edge_block": "Kyrosian Edge Block",
+  "block.skyspaceproject.kyrosian_tile_stairs": "Kyrosian Tile Stairs",
+  "block.skyspaceproject.kyrosian_glass_stairs": "Kyrosian Glass Stairs",
+  "block.skyspaceproject.kyrosian_edge_stairs": "Kyrosian Edge Stairs",
+  
+  "entity.skyspaceproject.synthesized_zombie": "Synthesized Zombie",
+  "entity.skyspaceproject.synthesized_skeleton": "Synthesized Skeleton",
+
+  "subtitle.entity.synthesizedzombie.ambient": "Synthesized Zombie groans",
+  "subtitle.entity.synthesizedzombie.death": "Synthesized Zombie dies",
+  "subtitle.entity.synthesizedzombie.hurt": "Synthesized Zombie hurts",
+  "subtitle.entity.synthesizedzombie.step": "Synthesized Zombie treads",
+
+  "itemGroup.skyspace_group": "Skyspace Project"  
+}

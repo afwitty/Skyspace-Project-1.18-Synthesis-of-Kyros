@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "skyspaceproject:block/kyrosian_edge_block",
+    "bottom": "skyspaceproject:block/kyrosian_edge_block",
+    "top": "skyspaceproject:block/kyrosian_edge_block"
+  }
+}
