@@ -6,11 +6,14 @@ import org.apache.logging.log4j.Logger;
 import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
+import com.cryotron.skyspaceproject.entities.kyrosian_archon.*;
 import com.cryotron.skyspaceproject.worldgen.dimensions.Dimensions;
 //import com.cryotron.skyspaceproject.worldgen.structures.Structures;
 import com.cryotron.skyspaceproject.worldgen.structures.*;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,6 +28,8 @@ import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.client.RenderProperties;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 
 
 @Mod.EventBusSubscriber(modid = Skyspace.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -73,9 +78,17 @@ public class SkyspaceSetup {
     }
     
     @SubscribeEvent
+    public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
+	
+    	event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
+
+    }
+    
+    @SubscribeEvent
     public static void onAttributeCreate(EntityAttributeCreationEvent event) {
         event.put(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), SynthesizedZombie.createAttributes().build());
         event.put(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), SynthesizedSkeleton.createAttributes().build());
-        //RenderingRegistry.registerEntityRenderingHandler(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), StalkerRender::new);
+        event.put(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchon.createAttributes().build());
+        //(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
     }
 }

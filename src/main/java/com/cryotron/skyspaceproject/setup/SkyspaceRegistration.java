@@ -52,6 +52,7 @@ import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.block.KyrosianEdgeBlock;
 import com.cryotron.skyspaceproject.block.KyrosianGlassBlock;
 import com.cryotron.skyspaceproject.block.KyrosianTileBlock;
+import com.cryotron.skyspaceproject.entities.kyrosian_archon.KyrosianArchon;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
 import com.cryotron.skyspaceproject.worldgen.structures.KyrosianMaze;
@@ -97,7 +98,7 @@ public class SkyspaceRegistration {
 	public static final RegistryObject<Block> KYROSIAN_GLASS_STAIRS		= BLOCKS.register("kyrosian_glass_stairs", ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));;
 	public static final RegistryObject<Block> KYROSIAN_EDGE_STAIRS		= BLOCKS.register("kyrosian_edge_stairs",  ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));;
     
-	public static final RegistryObject<Attribute> ENERGY_SHIELD = ATTRIBUTES.register("energy_shield", () -> new RangedAttribute("energy_shield", 0.0D, 0.0D, 1024.0D).setSyncable(true));
+	public static final RegistryObject<Attribute> MAX_ENERGY_SHIELD = ATTRIBUTES.register("energy_shield", () -> new RangedAttribute("energy_shield", 0.0D, 0.0D, 1024.0D).setSyncable(true));
 	public static final RegistryObject<Attribute> EVASION = ATTRIBUTES.register("evasion", () -> new RangedAttribute("evasion", 1.0D, 0.0D, 1024.0D).setSyncable(true));	
 	public static final RegistryObject<Attribute> ACCURACY = ATTRIBUTES.register("accuracy", () -> new RangedAttribute("accuracy", 1.0D, 0.0D, 1024.0D).setSyncable(true));	
 	
@@ -116,6 +117,14 @@ public class SkyspaceRegistration {
 				.build("synthesized_skeleton")
 			);
 	 public static final RegistryObject<Item> SYNTHESIZED_SKELETON_EGG = ITEMS.register("synthesized_skeleton", () -> new ForgeSpawnEggItem(SYNTHESIZED_SKELETON, 0xff0000, 0x00ff00, ITEM_PROPERTIES));
+	 
+	 public static final RegistryObject<EntityType<KyrosianArchon>> KYROSIAN_ARCHON = ENTITIES.register("kyrosian_archon", () -> EntityType.Builder.of(KyrosianArchon::new, MobCategory.MONSTER)
+				.sized(0.7f, 2.1f)
+				.clientTrackingRange(16)
+				.setShouldReceiveVelocityUpdates(false)
+				.build("kyrosian_archon")
+			 );
+	 public static final RegistryObject<Item> KYROSIAN_ARCHON_EGG = ITEMS.register("kyrosian_archon", () -> new ForgeSpawnEggItem(KYROSIAN_ARCHON, 0xff0000, 0x00ff00, ITEM_PROPERTIES));
 	
     public static final RegistryObject<Item> KYROSIAN_TILE_BLOCK_ITEM 			= fromBlock(KYROSIAN_TILE_BLOCK);
     public static final RegistryObject<Item> KYROSIAN_GLASS_BLOCK_ITEM		= fromBlock(KYROSIAN_GLASS_BLOCK);
@@ -299,9 +308,6 @@ public class SkyspaceRegistration {
 	
 	public static void addBiomeTypes() {
 		BiomeDictionary.addTypes(KYROS_QUADRANT_AXIS, BiomeDictionary.Type.VOID, BiomeDictionary.Type.END);
-//		BiomeDictionary.addTypes(KYROS_LYSNY_QUADRANT, BiomeDictionary.Type.WET);				// Lysny's Quadrant is poisonous and is reminescent of Ryslatha from Path of Exile.
-//		BiomeDictionary.addTypes(KYROS_ANGELA_QUADRANT, BiomeDictionary.Type.HOT);			// Angela's Quadrant is fiery and is reminescent of Kaom from Path of Exile.
-//		BiomeDictionary.addTypes(KYROS_MELISSA_QUADRANT, BiomeDictionary.Type.COLD);		// Melissa's Quadrant is frozen and is remines
 	}
     
 	private static ResourceKey<Biome> makeKey(String name) {

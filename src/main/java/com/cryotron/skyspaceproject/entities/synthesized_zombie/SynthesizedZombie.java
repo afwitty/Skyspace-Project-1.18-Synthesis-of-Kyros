@@ -22,7 +22,7 @@ public class SynthesizedZombie extends Zombie {
 	   public static AttributeSupplier.Builder createAttributes() {
 		      return Monster.createMonsterAttributes()
 		    		  .add(Attributes.MAX_HEALTH, 20.0D)
-		    		  .add(SkyspaceRegistration.ENERGY_SHIELD.get(), 20.0D)
+		    		  .add(SkyspaceRegistration.MAX_ENERGY_SHIELD.get(), 20.0D)
 		    		  .add(Attributes.FOLLOW_RANGE, 32.0D)
 		    		  .add(Attributes.MOVEMENT_SPEED, (double)0.20F)
 		    		  .add(Attributes.ATTACK_DAMAGE, 4.0D)

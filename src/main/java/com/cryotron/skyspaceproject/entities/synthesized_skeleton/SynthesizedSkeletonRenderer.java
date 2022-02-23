@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 
 public class SynthesizedSkeletonRenderer extends SkeletonRenderer {
-	   private static final ResourceLocation SYNTHESIZED_SKELETON_LOCATION = new ResourceLocation(Skyspace.ID, "textures/entity/synthesized_skeleton.png");
+	   private static final ResourceLocation TEXTURE = new ResourceLocation(Skyspace.ID, "textures/entity/synthesized_skeleton.png");
 
 	   public SynthesizedSkeletonRenderer(EntityRendererProvider.Context p_174409_) {
 	      super(p_174409_, ModelLayers.STRAY, ModelLayers.STRAY_INNER_ARMOR, ModelLayers.STRAY_OUTER_ARMOR);
@@ -17,6 +17,6 @@ public class SynthesizedSkeletonRenderer extends SkeletonRenderer {
 	   }
 
 	   public ResourceLocation getTextureLocation(AbstractSkeleton p_116049_) {
-	      return SYNTHESIZED_SKELETON_LOCATION;
+	      return TEXTURE;
 	   }
 }

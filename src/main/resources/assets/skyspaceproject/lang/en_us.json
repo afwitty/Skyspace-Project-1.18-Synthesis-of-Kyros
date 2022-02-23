@@ -1,6 +1,7 @@
 {
   "item.skyspaceproject.synthesized_zombie": "Synthesized Zombie Spawn Egg",
   "item.skyspaceproject.synthesized_skeleton": "Synthesized Skeleton Spawn Egg",
+  "item.skyspaceproject.archon": "Archon Spawn Egg",
 
   "block.skyspaceproject.kyrosian_tile_block": "Kyrosian Tile Block",
   "block.skyspaceproject.kyrosian_glass_block": "Kyrosian Glass Block",
@@ -11,11 +12,17 @@
   
   "entity.skyspaceproject.synthesized_zombie": "Synthesized Zombie",
   "entity.skyspaceproject.synthesized_skeleton": "Synthesized Skeleton",
+  "entity.skyspaceproject.kyrosian_archon": "Archon",
 
   "subtitle.entity.synthesizedzombie.ambient": "Synthesized Zombie groans",
   "subtitle.entity.synthesizedzombie.death": "Synthesized Zombie dies",
   "subtitle.entity.synthesizedzombie.hurt": "Synthesized Zombie hurts",
   "subtitle.entity.synthesizedzombie.step": "Synthesized Zombie treads",
+  
+  "subtitle.entity.synthesizedskeleton.ambient": "Synthesized Skeleton rattles",
+  "subtitle.entity.synthesizedskeleton.death": "Synthesized Skeleton dies",
+  "subtitle.entity.synthesizedskeleton.hurt": "Synthesized Skeleton hurts",
+  "subtitle.entity.synthesizedskeleton.step": "Synthesized Skeleton treads",
 
   "itemGroup.skyspace_group": "Skyspace Project"  
 }
