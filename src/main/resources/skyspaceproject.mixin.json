@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.cryotron.skyspaceproject.mixin",
+	"compatilibilityLevel": "JAVA_17",
+	"refmap": "skyspaceproject.mixin-refmap.json",
+	"mixins": [
+		"structures.StructurePoolAccessor",
+		"structures.SinglePoolElementAccessor",
+		"structures.StructureFeatureAccessor",
+		"structures.StructurePoolMixin",
+		"structures.StructureSettingsAccessor"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

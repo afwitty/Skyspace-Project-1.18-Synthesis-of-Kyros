@@ -3,12 +3,17 @@ package com.cryotron.skyspaceproject.capabilities.energyshield;
 import org.jetbrains.annotations.NotNull;
 
 import com.cryotron.skyspaceproject.Skyspace;
+import com.cryotron.skyspaceproject.entities.EnergyShieldEntity;
+import com.cryotron.skyspaceproject.entities.kyrosian_archon.KyrosianArchon;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
@@ -46,7 +51,12 @@ public class EnergyShieldAttacher {
 		
 	}
 	
-	public static void attach(final AttachCapabilitiesEvent<Entity> event) {
+	public static void attach(final AttachCapabilitiesEvent<LivingEntity> event) {
+		if (!(event.getObject() instanceof EnergyShieldEntity)) {
+			Skyspace.LOGGER.info("EnergyShieldEntity is not an instance of a LivingEntity.");
+			return;
+		}
+		
 		
 	}
 	

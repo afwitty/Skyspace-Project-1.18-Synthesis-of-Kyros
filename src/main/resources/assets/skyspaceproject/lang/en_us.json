@@ -23,6 +23,8 @@
   "subtitle.entity.synthesizedskeleton.death": "Synthesized Skeleton dies",
   "subtitle.entity.synthesizedskeleton.hurt": "Synthesized Skeleton hurts",
   "subtitle.entity.synthesizedskeleton.step": "Synthesized Skeleton treads",
+  
+   "subtitle.ambient.kyrosloop": "Kyrosian Winds howling"
 
   "itemGroup.skyspace_group": "Skyspace Project"  
 }

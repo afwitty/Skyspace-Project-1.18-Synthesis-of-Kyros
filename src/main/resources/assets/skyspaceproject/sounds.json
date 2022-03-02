@@ -32,7 +32,7 @@
 	},
 	
 		"entity.synthesized_skeleton.ambient": {
-		"subtitle": "subtitle.entity.synthesizedzombie.ambient",
+		"subtitle": "subtitle.entity.synthesizedskeleton.ambient",
 		"sounds": [
 			"skyspaceproject:entity/synthesized_skeleton/ambient1",
 			"skyspaceproject:entity/synthesized_skeleton/ambient2",
@@ -41,14 +41,14 @@
 		]
 	},
 	"entity.synthesized_skeleton.death": {
-		"subtitle": "subtitle.entity.synthesizedzombie.ambient",
+		"subtitle": "subtitle.entity.synthesizedskeleton.death",
 		"sounds": [
 			"skyspaceproject:entity/synthesized_skeleton/death1",
 			"skyspaceproject:entity/synthesized_skeleton/death2"
 		]
 	},
 	"entity.synthesized_skeleton.hurt": {
-		"subtitle": "subtitle.entity.synthesizedzombie.hurt",
+		"subtitle": "subtitle.entity.synthesizedskeleton.hurt",
 		"sounds": [
 			"skyspaceproject:entity/synthesized_skeleton/hurt1",
 			"skyspaceproject:entity/synthesized_skeleton/hurt2",
@@ -57,7 +57,7 @@
 		]
 	},
 	"entity.synthesized_skeleton.step": {
-		"subtitle": "subtitle.entity.synthesizedzombie.step",
+		"subtitle": "subtitle.entity.synthesizedskeleton.step",
 		"sounds": [
 			"skyspaceproject:entity/synthesized_skeleton/step1",
 			"skyspaceproject:entity/synthesized_skeleton/step2",

@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.cryotron.skyspaceproject.Skyspace;
+import com.cryotron.skyspaceproject.capabilities.energyshield.EnergyShieldCapability;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
 import com.cryotron.skyspaceproject.entities.kyrosian_archon.*;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -57,7 +59,10 @@ public class SkyspaceSetup {
     	GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();
 		
-		KyrosianMaze.mapChunkNodes();
+		KyrosianMaze.mapChunkNodes();			// Mapping Quadrant I Maze
+		KyrosianMaze.mapChunkNodesII();		// Mapping Quadrant II Maze
+		KyrosianMaze.mapChunkNodesIII();		// Mapping Quadrant III Maze
+		KyrosianMaze.mapChunkNodesIV();		// Mapping Quadrant IV Maze
 		modbus.addListener(SkyspaceSetup::setup);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modbus.addListener(ForgeClientSetup::init));
     }
@@ -67,7 +72,7 @@ public class SkyspaceSetup {
     		Dimensions.register();
     		SkyspaceRegistration.setupStructures();
     		SSConfiguredStructures.registerStructureFeatures();
-    		//MazeConfig.registerConfiguredStructures();
+//    		MazeConfig.registerConfiguredStructures();
     	});
     }
     
@@ -90,5 +95,10 @@ public class SkyspaceSetup {
         event.put(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), SynthesizedSkeleton.createAttributes().build());
         event.put(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchon.createAttributes().build());
         //(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
+    }
+    
+    @SubscribeEvent
+    public void registerCaps(RegisterCapabilitiesEvent event) {
+    	event.register(EnergyShieldCapability.class);
     }
 }

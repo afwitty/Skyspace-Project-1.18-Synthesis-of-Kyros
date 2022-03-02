@@ -121,8 +121,6 @@ import net.minecraft.world.scores.PlayerTeam;
 
 
 public abstract class EnergyShieldEntity extends LivingEntity {
-	
-	private static final EntityDataAccessor<Float> DATA_ENERGY_SHIELD_ID = SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.FLOAT);
 
 	protected EnergyShieldEntity(EntityType<? extends LivingEntity> p_20966_, Level p_20967_) {
 		super(p_20966_, p_20967_);
@@ -131,14 +129,6 @@ public abstract class EnergyShieldEntity extends LivingEntity {
 
 	public final float getMaxEnergyShield() {
 	      return (float) this.getAttributeValue(SkyspaceRegistration.MAX_ENERGY_SHIELD.get());
-	 }
-	   
-	 public float getEnergyShield() {
-	      return this.entityData.get(DATA_ENERGY_SHIELD_ID);
-	 }
-
-	public void setEnergyShield(float p_21154_) {
-	      this.entityData.set(DATA_ENERGY_SHIELD_ID, Mth.clamp(p_21154_, 0.0F, this.getMaxHealth()));
-	 }
+	 }	   
 	
 }

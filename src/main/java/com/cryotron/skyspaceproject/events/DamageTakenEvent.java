@@ -3,6 +3,9 @@ package com.cryotron.skyspaceproject.events;
 import java.util.Random;
 
 import com.cryotron.skyspaceproject.Skyspace;
+import com.cryotron.skyspaceproject.capabilities.energyshield.EnergyShieldAttacher;
+import com.cryotron.skyspaceproject.capabilities.energyshield.EnergyShieldCapability;
+import com.cryotron.skyspaceproject.capabilities.energyshield.EnergyShieldImplementation;
 import com.cryotron.skyspaceproject.entities.EnergyShieldEntity;
 import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 
@@ -89,7 +92,7 @@ public class DamageTakenEvent {
 
 		if ( entity.getAttribute(SkyspaceRegistration.MAX_ENERGY_SHIELD.get()) != null) {
 			
-			Skyspace.LOGGER.info("Energy Shield instance of test: " + (entity instanceof EnergyShieldEntity));
+			Skyspace.LOGGER.info("Energy Shield Capability Test: ");
 
 			
 //			if (entity instanceof SkyspaceEntity) {
