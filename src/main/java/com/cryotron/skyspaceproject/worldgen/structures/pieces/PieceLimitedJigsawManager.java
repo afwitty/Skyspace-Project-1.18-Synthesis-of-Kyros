@@ -111,7 +111,7 @@ public class PieceLimitedJigsawManager {
             // Get starting pool
             StructureTemplatePool startPool = jigsawConfig.startPool().get();
             if(startPool == null || startPool.size() == 0) {
-                Skyspace.LOGGER.warn("Skyspace (Referenced from Repurposed Structures): Empty or nonexistent start pool in structure: {}  Crash is imminent", structureID);
+                //Skyspace.LOGGER.warn("Skyspace (Referenced from Repurposed Structures): Empty or nonexistent start pool in structure: {}  Crash is imminent", structureID);
             }
 
             // Grab a random starting piece from the start pool. This is just the piece design itself, without rotation or position information.
@@ -176,6 +176,11 @@ public class PieceLimitedJigsawManager {
                     components.clear();
                     components.add(startPiece); // Add start piece to list of pieces
 
+<<<<<<< Updated upstream
+=======
+                  //Skyspace.LOGGER.info("List of components: " + components);
+
+>>>>>>> Stashed changes
                     if (jigsawConfig.maxDepth() > 0) {
                         AABB axisAlignedBB = new AABB(80, 120, 80, 80 + 1,180 + 1, 80 + 1);
                         BoxOctree boxOctree = new BoxOctree(axisAlignedBB); // The maximum boundary of the entire structure
@@ -303,6 +308,28 @@ public class PieceLimitedJigsawManager {
                     Skyspace.LOGGER.warn("Skyspace(Referenced from Repurposed Structures): Empty or nonexistent pool: {} which is being called from {}", jigsawBlockFallback, pieceBlueprint instanceof SinglePoolElement ? ((SinglePoolElementAccessor) pieceBlueprint).repurposedstructures_getTemplate().left().get() : "not a SinglePoolElement class");
                     continue;
                 }
+<<<<<<< Updated upstream
+=======
+                
+
+                if (jigsawBlockPos.getY() > 222) {
+            		//Skyspace.LOGGER.info("Maximum Y reached.");
+            		maxYreached = true;
+                }
+                if (jigsawBlockPos.getY() <= -224) {
+            		//Skyspace.LOGGER.info("Minimum Y reached.");
+            		minYreached = true;
+                }
+                              
+                if (minYreached && maxYreached) {
+            		//Skyspace.LOGGER.info("Both Minimum and Maximmum Y reached. Returning.");
+                	return;
+                }
+                
+//                Skyspace.LOGGER.info("Selected Piece: " + piece.toString());
+//                Skyspace.LOGGER.info("Piece Element: " + piece.getElement());
+//                Skyspace.LOGGER.info("Piece Position. " + piece.getPosition());
+>>>>>>> Stashed changes
 
                 // Adjustments for if the target block position is inside the current piece
                 boolean isTargetInsideCurrentPiece = pieceBoundingBox.isInside(jigsawBlockTargetPos);
@@ -461,7 +488,26 @@ public class PieceLimitedJigsawManager {
                         if (GeneralUtils.canJigsawsAttach(jigsawBlock, candidateJigsawBlock)) {
                             BlockPos candidateJigsawBlockPos = candidateJigsawBlock.pos;
                             BlockPos candidateJigsawBlockRelativePos = new BlockPos(jigsawBlockTargetPos.getX() - candidateJigsawBlockPos.getX(), jigsawBlockTargetPos.getY() - candidateJigsawBlockPos.getY(), jigsawBlockTargetPos.getZ() - candidateJigsawBlockPos.getZ());
+<<<<<<< Updated upstream
 
+=======
+//                            Skyspace.LOGGER.info("candidateJigsawBlockPos: " + candidateJigsawBlockPos.toString());
+//                            Skyspace.LOGGER.info("candidateJigsawBlockRelativePos: " + candidateJigsawBlockRelativePos.toString());
+                            
+                          
+
+                            
+                            if ( (jigsawBlockTargetPos.getY() - candidateJigsawBlockPos.getY()) < -225 ) {
+                            	//Skyspace.LOGGER.info("Returning jigsaw empty handed because it goes below Y = -225!");
+                            	return null;
+                            }
+                            
+                            if ( (jigsawBlockTargetPos.getY() - candidateJigsawBlockPos.getY()) > 223 ) {
+                            	//Skyspace.LOGGER.info("Returning jigsaw empty handed because it goes above Y = 223!");
+                            	return null;
+                            }
+                            
+>>>>>>> Stashed changes
                             // Get the bounding box for the piece, offset by the relative position difference
                             BoundingBox candidateBoundingBox = candidatePiece.getBoundingBox(this.structureManager, candidateJigsawBlockRelativePos, rotation);
 

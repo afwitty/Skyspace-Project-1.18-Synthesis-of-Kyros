@@ -11,11 +11,28 @@
   
   "entity.skyspaceproject.synthesized_zombie": "Synthesized Zombie",
   "entity.skyspaceproject.synthesized_skeleton": "Synthesized Skeleton",
+<<<<<<< Updated upstream
+=======
+  "entity.skyspaceproject.kyrosian_archon": "Archon",
+  "entity.skyspaceproject.kyrosian_enforcer": "Enforcer",
+  "entity.skyspaceproject.kyrosian_mutilator": "Mutilator",
+  "entity.skyspaceproject.kyrosian_deacon": "Deacon",
+>>>>>>> Stashed changes
 
   "subtitle.entity.synthesizedzombie.ambient": "Synthesized Zombie groans",
   "subtitle.entity.synthesizedzombie.death": "Synthesized Zombie dies",
   "subtitle.entity.synthesizedzombie.hurt": "Synthesized Zombie hurts",
   "subtitle.entity.synthesizedzombie.step": "Synthesized Zombie treads",
+<<<<<<< Updated upstream
+=======
+  
+  "subtitle.entity.synthesizedskeleton.ambient": "Synthesized Skeleton rattles",
+  "subtitle.entity.synthesizedskeleton.death": "Synthesized Skeleton dies",
+  "subtitle.entity.synthesizedskeleton.hurt": "Synthesized Skeleton hurts",
+  "subtitle.entity.synthesizedskeleton.step": "Synthesized Skeleton treads",
+  
+   "subtitle.ambient.kyrosloop": "Kyrosian Winds howl"
+>>>>>>> Stashed changes
 
   "itemGroup.skyspace_group": "Skyspace Project"  
 }

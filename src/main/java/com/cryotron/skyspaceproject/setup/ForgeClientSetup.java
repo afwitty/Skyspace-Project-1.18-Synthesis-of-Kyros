@@ -4,6 +4,10 @@ import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.client.render.SkyspaceDimensionRender;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombieRenderer;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeletonRenderer;
+import com.cryotron.skyspaceproject.entities.kyrosian_archon.KyrosianArchonRenderer;
+import com.cryotron.skyspaceproject.entities.kyrosian_enforcer.KyrosianEnforcerRenderer;
+import com.cryotron.skyspaceproject.entities.kyrosian_mutilator.KyrosianMutilatorRenderer;
+import com.cryotron.skyspaceproject.entities.kyrosian_deacon.KyrosianDeaconRenderer;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -27,6 +31,11 @@ public class ForgeClientSetup {
     public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), SynthesizedZombieRenderer::new);
         event.registerEntityRenderer(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), SynthesizedSkeletonRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_ENFORCER.get(), KyrosianEnforcerRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_MUTILATOR.get(), KyrosianMutilatorRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_DEACON.get(), KyrosianDeaconRenderer::new);
+        
     }
 
 }

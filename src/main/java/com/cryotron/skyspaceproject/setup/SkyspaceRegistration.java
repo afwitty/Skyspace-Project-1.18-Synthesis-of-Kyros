@@ -52,6 +52,13 @@ import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.block.KyrosianEdgeBlock;
 import com.cryotron.skyspaceproject.block.KyrosianGlassBlock;
 import com.cryotron.skyspaceproject.block.KyrosianTileBlock;
+<<<<<<< Updated upstream
+=======
+import com.cryotron.skyspaceproject.entities.kyrosian_archon.KyrosianArchon;
+import com.cryotron.skyspaceproject.entities.kyrosian_deacon.KyrosianDeacon;
+import com.cryotron.skyspaceproject.entities.kyrosian_enforcer.KyrosianEnforcer;
+import com.cryotron.skyspaceproject.entities.kyrosian_mutilator.KyrosianMutilator;
+>>>>>>> Stashed changes
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
 import com.cryotron.skyspaceproject.worldgen.structures.KyrosianMaze;
@@ -116,6 +123,41 @@ public class SkyspaceRegistration {
 				.build("synthesized_skeleton")
 			);
 	 public static final RegistryObject<Item> SYNTHESIZED_SKELETON_EGG = ITEMS.register("synthesized_skeleton", () -> new ForgeSpawnEggItem(SYNTHESIZED_SKELETON, 0xff0000, 0x00ff00, ITEM_PROPERTIES));
+<<<<<<< Updated upstream
+=======
+	 
+	 public static final RegistryObject<EntityType<KyrosianArchon>> KYROSIAN_ARCHON = ENTITIES.register("kyrosian_archon", () -> EntityType.Builder.of(KyrosianArchon::new, MobCategory.MONSTER)
+				.sized(0.7f, 2.1f)
+				.clientTrackingRange(16)
+				.setShouldReceiveVelocityUpdates(false)
+				.build("kyrosian_archon")
+			 );
+	 public static final RegistryObject<Item> KYROSIAN_ARCHON_EGG = ITEMS.register("kyrosian_archon", () -> new ForgeSpawnEggItem(KYROSIAN_ARCHON, 0xff0000, 0x00ff00, ITEM_PROPERTIES));
+	 
+	 public static final RegistryObject<EntityType<KyrosianEnforcer>> KYROSIAN_ENFORCER = ENTITIES.register("kyrosian_enforcer", () -> EntityType.Builder.of(KyrosianEnforcer::new, MobCategory.MONSTER)
+				.sized(0.7f, 2.1f)
+				.clientTrackingRange(16)
+				.setShouldReceiveVelocityUpdates(false)
+				.build("kyrosian_enforcer")
+			 );
+	 public static final RegistryObject<Item> KYROSIAN_ENFORCER_EGG = ITEMS.register("kyrosian_enforcer", () -> new ForgeSpawnEggItem(KYROSIAN_ENFORCER, 0xff0000, 0x00ff00, ITEM_PROPERTIES));
+	 
+	 public static final RegistryObject<EntityType<KyrosianMutilator>> KYROSIAN_MUTILATOR = ENTITIES.register("kyrosian_mutilator", () -> EntityType.Builder.of(KyrosianMutilator::new, MobCategory.MONSTER)
+				.sized(0.7f, 2.1f)
+				.clientTrackingRange(16)
+				.setShouldReceiveVelocityUpdates(false)
+				.build("kyrosian_mutilator")
+			 );
+	 public static final RegistryObject<Item> KYROSIAN_MUTILATOR_EGG = ITEMS.register("kyrosian_mutilator", () -> new ForgeSpawnEggItem(KYROSIAN_MUTILATOR, 0xff0000, 0x00ff00, ITEM_PROPERTIES));
+	 
+	 public static final RegistryObject<EntityType<KyrosianDeacon>> KYROSIAN_DEACON = ENTITIES.register("kyrosian_deacon", () -> EntityType.Builder.of(KyrosianDeacon::new, MobCategory.MONSTER)
+				.sized(0.7f, 2.1f)
+				.clientTrackingRange(16)
+				.setShouldReceiveVelocityUpdates(false)
+				.build("kyrosian_deacon")
+			 );
+	 public static final RegistryObject<Item> KYROSIAN_DEACON_EGG = ITEMS.register("kyrosian_deacon", () -> new ForgeSpawnEggItem(KYROSIAN_DEACON, 0xff0000, 0x00ff00, ITEM_PROPERTIES));
+>>>>>>> Stashed changes
 	
     public static final RegistryObject<Item> KYROSIAN_TILE_BLOCK_ITEM 			= fromBlock(KYROSIAN_TILE_BLOCK);
     public static final RegistryObject<Item> KYROSIAN_GLASS_BLOCK_ITEM		= fromBlock(KYROSIAN_GLASS_BLOCK);

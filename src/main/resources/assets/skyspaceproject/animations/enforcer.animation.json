@@ -1,0 +1,137 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.enforcer.idle": {
+			"loop": true,
+			"animation_length": 2.08,
+			"bones": {
+				"Head": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [0, 1, 0]
+						},
+						"2.08": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"LeftShoulder": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [-2, 2, 0]
+						},
+						"2.08": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"ClawI": {
+					"rotation": {
+						"vector": [35, 0, 0]
+					}
+				},
+				"ClawII": {
+					"rotation": {
+						"vector": [0, 35, 0]
+					}
+				},
+				"ClawIII": {
+					"rotation": {
+						"vector": [-35, -35, 0]
+					}
+				},
+				"RightShoulder": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [2, 2, 0]
+						},
+						"2.08": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"ClawI2": {
+					"rotation": {
+						"vector": [35, 0, 0]
+					}
+				},
+				"ClawII2": {
+					"rotation": {
+						"vector": [-35, 35, 0]
+					}
+				},
+				"ClawIII2": {
+					"rotation": {
+						"vector": [0, -35, 0]
+					}
+				},
+				"Body": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [0, 1, 0],
+							"easing": "linear"
+						},
+						"2.04": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"Legs": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.04": {
+							"vector": [0, 1, 0]
+						},
+						"2.04": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"UpperClawIII2": {
+					"rotation": {
+						"vector": [0, 60, 0]
+					}
+				},
+				"UpperClawII": {
+					"rotation": {
+						"vector": [0, -60, 0]
+					}
+				},
+				"UpperClawI": {
+					"rotation": {
+						"vector": [-60, 0, 0]
+					}
+				},
+				"UpperClawIII": {
+					"rotation": {
+						"vector": [60, 0, 60]
+					}
+				},
+				"UpperClawI2": {
+					"rotation": {
+						"vector": [-60, 0, 0]
+					}
+				},
+				"UpperClawII2": {
+					"rotation": {
+						"vector": [60, 0, -60]
+					}
+				}
+			}
+		}
+	}
+}

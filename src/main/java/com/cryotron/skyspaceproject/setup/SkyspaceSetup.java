@@ -4,6 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.cryotron.skyspaceproject.Skyspace;
+<<<<<<< Updated upstream
+=======
+import com.cryotron.skyspaceproject.capabilities.CapabilityList;
+import com.cryotron.skyspaceproject.capabilities.energyshield.IEnergyShieldCapability;
+>>>>>>> Stashed changes
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
 import com.cryotron.skyspaceproject.worldgen.dimensions.Dimensions;
@@ -11,6 +16,11 @@ import com.cryotron.skyspaceproject.worldgen.dimensions.Dimensions;
 import com.cryotron.skyspaceproject.worldgen.structures.*;
 
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+<<<<<<< Updated upstream
+=======
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.world.entity.Entity;
+>>>>>>> Stashed changes
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -52,7 +62,17 @@ public class SkyspaceSetup {
     	GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();
 		
+<<<<<<< Updated upstream
 		KyrosianMaze.mapChunkNodes();
+=======
+		KyrosianMaze.mapChunkNodes();			// Mapping Quadrant I Maze
+		KyrosianMaze.mapChunkNodesII();		// Mapping Quadrant II Maze
+		KyrosianMaze.mapChunkNodesIII();		// Mapping Quadrant III Maze
+		KyrosianMaze.mapChunkNodesIV();		// Mapping Quadrant IV Maze
+		
+		modbus.addListener(CapabilityList::registerCapabilities);
+		MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, CapabilityList::attachEntityCapability);
+>>>>>>> Stashed changes
 		modbus.addListener(SkyspaceSetup::setup);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modbus.addListener(ForgeClientSetup::init));
     }
@@ -76,6 +96,17 @@ public class SkyspaceSetup {
     public static void onAttributeCreate(EntityAttributeCreationEvent event) {
         event.put(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), SynthesizedZombie.createAttributes().build());
         event.put(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), SynthesizedSkeleton.createAttributes().build());
+<<<<<<< Updated upstream
         //RenderingRegistry.registerEntityRenderingHandler(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), StalkerRender::new);
     }
+=======
+        event.put(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchon.createAttributes().build());
+        event.put(SkyspaceRegistration.KYROSIAN_ENFORCER.get(), KyrosianArchon.createAttributes().build());
+        event.put(SkyspaceRegistration.KYROSIAN_MUTILATOR.get(), KyrosianArchon.createAttributes().build());
+        event.put(SkyspaceRegistration.KYROSIAN_DEACON.get(), KyrosianArchon.createAttributes().build());
+        //(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
+    }
+    
+
+>>>>>>> Stashed changes
 }

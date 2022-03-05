@@ -3,11 +3,20 @@ package com.cryotron.skyspaceproject.events;
 import java.util.Random;
 
 import com.cryotron.skyspaceproject.Skyspace;
+<<<<<<< Updated upstream
+=======
+import com.cryotron.skyspaceproject.capabilities.CapabilityList;
+import com.cryotron.skyspaceproject.capabilities.energyshield.EnergyShieldCapabilityHandler;
+import com.cryotron.skyspaceproject.capabilities.energyshield.IEnergyShieldCapability;
+import com.cryotron.skyspaceproject.entities.EnergyShieldEntity;
+>>>>>>> Stashed changes
 import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -17,7 +26,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Skyspace.ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class DamageTakenEvent {
 	
-	static Attribute ENERGY_SHIELD;
+//	static Attribute ENERGY_SHIELD;
 	static Attribute EVASION;
 	static Attribute ACCURACY;
 	static Double ENERGY_SHIELD_VALUE ;
@@ -74,6 +83,7 @@ public class DamageTakenEvent {
 	
 	
 	@SubscribeEvent
+<<<<<<< Updated upstream
 	public static void DamageEvent(LivingDamageEvent event )  {
 		LivingEntity entity = event.getEntityLiving();
 		double dammie = event.getAmount();
@@ -84,6 +94,57 @@ public class DamageTakenEvent {
 			
 
 		}
+=======
+	public static void DamageEvent(LivingDamageEvent event)  {
+		LivingEntity entity = event.getEntityLiving();		
+		float dammie = event.getAmount();
+		LazyOptional<IEnergyShieldCapability> es = entity.getCapability(CapabilityList.ENERGY_SHIELD);
+				
+
+		
+		Skyspace.LOGGER.info("LivingDamageEvent Fired! Entity fired: " + entity.getName().getString() + " for " + dammie + " damage.");
+
+		if (entity.getCapability(CapabilityList.ENERGY_SHIELD).isPresent()) {
+			
+			Skyspace.LOGGER.info("HIT: Entity's Energy Shield Value is... " + EnergyShieldCapabilityHandler.getEnergyShieldValue() );
+			Skyspace.LOGGER.info("HIT: Entity's Health Value is... " + entity.getHealth() );
+			
+			if ( EnergyShieldCapabilityHandler.getEnergyShieldValue() > 0.00f ) {
+				if ( EnergyShieldCapabilityHandler.getEnergyShieldValue() - dammie > 0 ) {
+					EnergyShieldCapabilityHandler.setEnergyShieldValue( EnergyShieldCapabilityHandler.getEnergyShieldValue() - dammie );
+					event.setAmount(0);
+					
+					Skyspace.LOGGER.info("RESOLUTION: Entity's Energy Shield Value is... " + EnergyShieldCapabilityHandler.getEnergyShieldValue() );
+					Skyspace.LOGGER.info("RESOLUTION: Entity's Health Value is... " + entity.getHealth() );
+					
+				}
+				if ( EnergyShieldCapabilityHandler.getEnergyShieldValue() - dammie <= 0.00f ) {
+					EnergyShieldCapabilityHandler.setEnergyShieldValue(0);
+					event.setAmount(dammie - EnergyShieldCapabilityHandler.getEnergyShieldValue());				
+										
+					Skyspace.LOGGER.info("RESOLUTION: Entity's Energy Shield Value is... " + EnergyShieldCapabilityHandler.getEnergyShieldValue() );
+					Skyspace.LOGGER.info("RESOLUTION: Entity's Health Value is... " + entity.getHealth() );
+				}
+
+			}
+
+				
+		}
+			
+//			if (entity instanceof SkyspaceEntity) {
+//				Skyspace.LOGGER.info("Shield before hit:  " + SSEntity.getEnergyShieldValue() + " Energy Shield.");
+//			}
+			
+			//Skyspace.LOGGER.info("Damaged Entity has Energy Shield of... " + entity.getAttributeValue(SkyspaceRegistration.MAX_ENERGY_SHIELD.get()));
+//			Skyspace.LOGGER.info("Shield before hit:  " +  + " Energy Shield.");
+//			if (((SkyspaceEntity) entity).getEnergyShieldValue() > 0) {
+//				((SkyspaceEntity) entity).setEnergyShieldValue(((SkyspaceEntity) entity).getEnergyShieldValue() - dammie);
+//				dammie = 0;
+//			}
+//			Skyspace.LOGGER.info("Shield after hit:  " + (((SkyspaceEntity) entity).getEnergyShieldValue()) + " Energy Shield.");
+
+		//Skyspace.LOGGER.info("Entity Resolution:  " + (entity.getHealth()-dammie) + " Health.");
+>>>>>>> Stashed changes
 		
 	}
 	
