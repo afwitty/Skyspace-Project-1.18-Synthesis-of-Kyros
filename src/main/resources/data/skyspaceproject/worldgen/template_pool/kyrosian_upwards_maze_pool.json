@@ -1,0 +1,150 @@
+{
+  "name": "skyspaceproject:kyrosian_upwards_maze_pool",
+  "fallback": "skyspaceproject:kyrosian_upwards_maze_pool",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/terminus/kyrosian_terminus_x",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/terminus/kyrosian_terminus_z",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/terminus/kyrosian_terminus_negx",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+        {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/terminus/kyrosian_terminus_negz",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/obstruction/kyrosian_chunk_cube",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_4-way_road",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+        {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_x_road",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+        {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_z_road",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+        {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_3-way_road_facing_x",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+            {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_3-way_road_facing_z",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+            {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_3-way_road_facing_negx",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+            {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_3-way_road_facing_negz",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+            {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_2-way_ztox_corner",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+                {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_2-way_negztonegx_corner",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+                {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_2-way_xtonegz_corner",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+                {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:up/continuous/kyrosian_2-way_negxtoz_corner",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

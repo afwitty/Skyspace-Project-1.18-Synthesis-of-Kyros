@@ -85,7 +85,7 @@
 				{
 					"name": "Legs",
 					"parent": "Archon",
-					"pivot": [0, 18, 0]
+					"pivot": [0, 2, 0]
 				},
 				{
 					"name": "Robe",

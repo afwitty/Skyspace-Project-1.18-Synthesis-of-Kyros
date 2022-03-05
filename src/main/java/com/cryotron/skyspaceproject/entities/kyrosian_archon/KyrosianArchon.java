@@ -16,8 +16,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class KyrosianArchon extends Monster implements IAnimatable {
-
-
+	
 	public KyrosianArchon(EntityType<? extends Monster> p_33002_, Level p_33003_) {
 		super(p_33002_, p_33003_);
 		

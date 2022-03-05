@@ -4,28 +4,25 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.cryotron.skyspaceproject.Skyspace;
-<<<<<<< Updated upstream
-=======
 import com.cryotron.skyspaceproject.capabilities.CapabilityList;
 import com.cryotron.skyspaceproject.capabilities.energyshield.IEnergyShieldCapability;
->>>>>>> Stashed changes
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
+import com.cryotron.skyspaceproject.entities.kyrosian_archon.*;
 import com.cryotron.skyspaceproject.worldgen.dimensions.Dimensions;
 //import com.cryotron.skyspaceproject.worldgen.structures.Structures;
 import com.cryotron.skyspaceproject.worldgen.structures.*;
+import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-<<<<<<< Updated upstream
-=======
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;
->>>>>>> Stashed changes
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,6 +32,8 @@ import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.client.RenderProperties;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 
 
 @Mod.EventBusSubscriber(modid = Skyspace.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -62,9 +61,6 @@ public class SkyspaceSetup {
     	GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();
 		
-<<<<<<< Updated upstream
-		KyrosianMaze.mapChunkNodes();
-=======
 		KyrosianMaze.mapChunkNodes();			// Mapping Quadrant I Maze
 		KyrosianMaze.mapChunkNodesII();		// Mapping Quadrant II Maze
 		KyrosianMaze.mapChunkNodesIII();		// Mapping Quadrant III Maze
@@ -72,7 +68,6 @@ public class SkyspaceSetup {
 		
 		modbus.addListener(CapabilityList::registerCapabilities);
 		MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, CapabilityList::attachEntityCapability);
->>>>>>> Stashed changes
 		modbus.addListener(SkyspaceSetup::setup);
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modbus.addListener(ForgeClientSetup::init));
     }
@@ -82,7 +77,7 @@ public class SkyspaceSetup {
     		Dimensions.register();
     		SkyspaceRegistration.setupStructures();
     		SSConfiguredStructures.registerStructureFeatures();
-    		//MazeConfig.registerConfiguredStructures();
+//    		MazeConfig.registerConfiguredStructures();
     	});
     }
     
@@ -93,13 +88,16 @@ public class SkyspaceSetup {
     }
     
     @SubscribeEvent
+    public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
+	
+    	event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
+
+    }
+    
+    @SubscribeEvent
     public static void onAttributeCreate(EntityAttributeCreationEvent event) {
         event.put(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), SynthesizedZombie.createAttributes().build());
         event.put(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), SynthesizedSkeleton.createAttributes().build());
-<<<<<<< Updated upstream
-        //RenderingRegistry.registerEntityRenderingHandler(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), StalkerRender::new);
-    }
-=======
         event.put(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchon.createAttributes().build());
         event.put(SkyspaceRegistration.KYROSIAN_ENFORCER.get(), KyrosianArchon.createAttributes().build());
         event.put(SkyspaceRegistration.KYROSIAN_MUTILATOR.get(), KyrosianArchon.createAttributes().build());
@@ -107,6 +105,4 @@ public class SkyspaceSetup {
         //(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
     }
     
-
->>>>>>> Stashed changes
 }

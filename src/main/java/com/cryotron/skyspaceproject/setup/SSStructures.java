@@ -39,9 +39,9 @@ public class SSStructures {
     public static final Set<ResourceLocation> SS_STRUCTURE_START_PIECES = new HashSet<>();
     
     public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> KYROSIAN_MAZE = addToStructureMaps("kyrosian_maze", () -> KyrosianMaze.create(new GenericJigsawStructureCodeConfig.Builder<>(new ResourceLocation(Skyspace.ID, "kyrosian_maze_pool"))
-//    		.setStructureSize(8)
+    		.setStructureSize(4)
 //    		.setStructureBlacklistRange(1)
-    		.setFixedYSpawn(1)
+    		.setFixedYSpawn(4)
     		.build()));		
     //public static final RegistryObject<StructureFeature<JigsawConfiguration>> KYROSIAN_MAZE = addToStructureMaps("kyrosian_maze", () -> (new KyrosianMaze(JigsawConfiguration.CODEC)));		
     		
