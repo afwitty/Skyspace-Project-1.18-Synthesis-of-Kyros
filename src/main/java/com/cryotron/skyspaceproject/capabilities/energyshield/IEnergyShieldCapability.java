@@ -17,7 +17,7 @@ public interface IEnergyShieldCapability extends INBTSerializable<CompoundTag> {
 
 //	int shieldsLeft();
 //
-	void initEnergyShield(float es);
+//	void initEnergyShield(float es);
 	
 	float getEnergyShield();
 	

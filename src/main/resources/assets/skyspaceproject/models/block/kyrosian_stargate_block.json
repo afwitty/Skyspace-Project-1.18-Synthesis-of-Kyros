@@ -1,0 +1,5 @@
+{
+    "parent": "block/block",
+    "textures": { "all": "block/nether_portal", "particle": "block/nether_portal" },
+    "elements": [{ "from": [ 4, 0, 4 ], "to": [ 12, 16, 12 ], "faces": {"left": {"texture": "#all" }}}]
+}

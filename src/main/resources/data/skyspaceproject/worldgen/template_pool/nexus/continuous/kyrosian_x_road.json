@@ -1,0 +1,24 @@
+{
+  "name": "skyspaceproject:nexus/continuous/kyrosian_x_road",
+  "fallback": "skyspaceproject:nexus/continuous/kyrosian_x_road",
+  "elements": [
+    {
+      "weight": 80,
+      "element": {
+        "location": "skyspaceproject:nojigsaw/continuous/kyrosian_x_road",
+        "processors": "minecraft:empty",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+	{	
+      "weight": 40,
+      "element": {
+        "location": "skyspaceproject:nojigsaw/continuous/kyrosian_x_road",
+        "processors": "minecraft:empty",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+   ]
+}

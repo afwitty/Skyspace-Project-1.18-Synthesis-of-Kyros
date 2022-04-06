@@ -129,6 +129,7 @@ public class Structures {
 	                if(biomeCategory != Biome.BiomeCategory.OCEAN && biomeCategory != Biome.BiomeCategory.THEEND && biomeCategory != Biome.BiomeCategory.NETHER) {
 	                	if (serverLevel.dimension().equals(Dimensions.KYROS)) {
 		                   associateBiomeToConfiguredStructure(STStructureToMultiMap, SSConfiguredStructures.KYROSIAN_MAZE, biomeEntry.getKey());
+		                   associateBiomeToConfiguredStructure(STStructureToMultiMap, SSConfiguredStructures.KYROSIAN_NEXUS, biomeEntry.getKey());
 	                    }
 
 	                }
@@ -194,7 +195,7 @@ public class Structures {
 	        return new PieceGeneratorSupplier.Context<>(
 	                context.chunkGenerator(),
 	                context.biomeSource(),
-	                context.seed(),
+	                1,
 	                context.chunkPos(),
 	                newConfig,
 	                context.heightAccessor(),
@@ -204,11 +205,4 @@ public class Structures {
 	        );
 	    }
 
-
-	    public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
-//	        if (event.getStructure() == Registration.PORTAL_OVERWORLD.get() || event.getStructure() == Registration.PORTAL_MYSTERIOUS.get()) {
-//	            event.addEntitySpawns(MobCategory.MONSTER, STRUCTURE_MONSTERS.get());
-//	        }    	
-//	    	KyrosianMaze.setupStructureSpawns(event);
-	    }
 }

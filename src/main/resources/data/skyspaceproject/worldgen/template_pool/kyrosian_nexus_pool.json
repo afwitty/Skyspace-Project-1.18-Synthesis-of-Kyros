@@ -1,0 +1,15 @@
+{
+  "name": "skyspaceproject:kyrosian_nexus_pool",
+  "fallback": "skyspaceproject:kyrosian_nexus_pool",
+  "elements": [
+     {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:nojigsaw/continuous/kyrosian_4-way_road",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

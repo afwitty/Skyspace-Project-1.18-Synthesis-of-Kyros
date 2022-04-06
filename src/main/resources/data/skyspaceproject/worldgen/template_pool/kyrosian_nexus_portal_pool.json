@@ -1,0 +1,15 @@
+{
+  "name": "skyspaceproject:kyrosian_nexus_portal_pool",
+  "fallback": "skyspaceproject:kyrosian_nexus_portal_pool",
+  "elements": [
+     {
+      "weight": 1,
+      "element": {
+        "location": "skyspaceproject:kyrosian_nexus_portal",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

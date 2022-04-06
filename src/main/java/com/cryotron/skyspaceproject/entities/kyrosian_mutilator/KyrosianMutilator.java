@@ -61,4 +61,9 @@ public class KyrosianMutilator extends Monster implements IAnimatable {
 		    public float getBrightness() {
 		    	return 16f;
 		    }
+		    
+			@Override
+			public boolean removeWhenFarAway(double p_213397_1_) {
+				return false;
+			}
 }

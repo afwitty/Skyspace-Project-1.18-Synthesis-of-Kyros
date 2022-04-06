@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "skyspaceproject:block/kyrosian_stargate_block_ns"
+    },
+    "axis=z": {
+      "model": "skyspaceproject:block/kyrosian_stargate_block_ew"
+    }	
+  }
+}

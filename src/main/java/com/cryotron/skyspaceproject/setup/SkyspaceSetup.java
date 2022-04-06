@@ -9,9 +9,12 @@ import com.cryotron.skyspaceproject.capabilities.energyshield.IEnergyShieldCapab
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
 import com.cryotron.skyspaceproject.entities.kyrosian_archon.*;
+import com.cryotron.skyspaceproject.entities.kyrosian_enforcer.*;
+import com.cryotron.skyspaceproject.entities.kyrosian_mutilator.*;
+import com.cryotron.skyspaceproject.entities.kyrosian_deacon.*;
 import com.cryotron.skyspaceproject.worldgen.dimensions.Dimensions;
-//import com.cryotron.skyspaceproject.worldgen.structures.Structures;
-import com.cryotron.skyspaceproject.worldgen.structures.*;
+import com.cryotron.skyspaceproject.worldgen.structures.Structures;
+import com.cryotron.skyspaceproject.worldgen.structures.KyrosianMaze;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -20,6 +23,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
@@ -47,12 +53,9 @@ public class SkyspaceSetup {
     public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab(TAB_NAME) {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(Items.DIAMOND);
+            return new ItemStack(Items.DEEPSLATE_LAPIS_ORE);
         }
     };
-    
-    // Test
-    
      
     public static void preInit() {
 		IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -75,22 +78,30 @@ public class SkyspaceSetup {
     public static void setup(FMLCommonSetupEvent event) {
     	event.enqueueWork(() -> {
     		Dimensions.register();
-    		SkyspaceRegistration.setupStructures();
+    		SSStructures.setupStructures();
     		SSConfiguredStructures.registerStructureFeatures();
 //    		MazeConfig.registerConfiguredStructures();
+    		
+            SpawnPlacements.register(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE,
+                    Monster::checkAnyLightMonsterSpawnRules);
+            SpawnPlacements.register(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE,
+                    Monster::checkAnyLightMonsterSpawnRules);
     	});
     }
     
     public static void postInit() {
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
         forgeBus.addListener(EventPriority.NORMAL, Structures::addDimensionalSpacing);
-        //forgeBus.addListener(EventPriority.NORMAL, KyrosianMaze::setupStructureSpawns);
+        forgeBus.addListener(EventPriority.NORMAL, KyrosianMaze::setupStructureSpawns);
     }
     
     @SubscribeEvent
     public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
 	
     	event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
+    	event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_ENFORCER.get(), KyrosianEnforcerRenderer::new);
+    	event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_MUTILATOR.get(), KyrosianMutilatorRenderer::new);
+    	event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_DEACON.get(), KyrosianDeaconRenderer::new);
 
     }
     

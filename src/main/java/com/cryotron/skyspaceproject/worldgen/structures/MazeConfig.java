@@ -16,6 +16,8 @@ public class MazeConfig {
     /**
      * Static instance of our structure so we can reference it and add it to biomes easily.
      */
+
+	
 //    public static ConfiguredStructureFeature<?, ?> CONFIGURED_KYROSIAN_MAZE = SSStructures.KYROSIAN_MAZE.get()
 //            .configured(new JigsawConfiguration(() -> PlainVillagePools.START, 0));
     // Dummy JigsawConfiguration values for now. We will modify the pool at runtime since we cannot get json pool files here at mod init.

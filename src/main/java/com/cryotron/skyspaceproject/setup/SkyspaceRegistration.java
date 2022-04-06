@@ -1,7 +1,13 @@
 package com.cryotron.skyspaceproject.setup;
 
 import net.minecraft.SharedConstants;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleEngine;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -11,6 +17,7 @@ import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -25,9 +32,13 @@ import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfigura
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -52,12 +63,16 @@ import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.block.KyrosianEdgeBlock;
 import com.cryotron.skyspaceproject.block.KyrosianGlassBlock;
 import com.cryotron.skyspaceproject.block.KyrosianTileBlock;
+import com.cryotron.skyspaceproject.block.stargate.KyrosianStargateBlock;
+import com.cryotron.skyspaceproject.block.stargate.KyrosianStargateFrame;
 import com.cryotron.skyspaceproject.entities.kyrosian_archon.KyrosianArchon;
 import com.cryotron.skyspaceproject.entities.kyrosian_deacon.KyrosianDeacon;
 import com.cryotron.skyspaceproject.entities.kyrosian_enforcer.KyrosianEnforcer;
 import com.cryotron.skyspaceproject.entities.kyrosian_mutilator.KyrosianMutilator;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
+import com.cryotron.skyspaceproject.items.FlintAndRune;
+import com.cryotron.skyspaceproject.registers.SkyspaceGroup;
 import com.cryotron.skyspaceproject.worldgen.structures.KyrosianMaze;
 
 public class SkyspaceRegistration {
@@ -68,9 +83,11 @@ public class SkyspaceRegistration {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ID);
     public static final DeferredRegister<SoundEvent> SFX = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ID);
+    public static final DeferredRegister<ParticleType<?>> PART = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ID);
     
     public static void init() {
     	IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    	PART.register(bus);
     	BIOMES.register(bus);
     	ATTRIBUTES.register(bus);
     	ENTITIES.register(bus);
@@ -83,6 +100,8 @@ public class SkyspaceRegistration {
     // Some common properties for our blocks and items
     public static final BlockBehaviour.Properties ORE_PROPERTIES = BlockBehaviour.Properties.of(Material.STONE).strength(2f).requiresCorrectToolForDrops();
     public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(SkyspaceSetup.ITEM_GROUP);
+    
+    public static final RegistryObject<SimpleParticleType> ENERGY_SHIELD_DAMAGE_INDICATOR = PART.register("energy_shield_damage_indicator", () -> new SimpleParticleType(false));
     
 	public static final ResourceKey<Biome> KYROS_QUADRANT_AXIS = makeQuadAxis("kyros_quadrant_axis"); 
 //	BIOMES.register("kyros_quadrant_axis", () ->
@@ -98,8 +117,12 @@ public class SkyspaceRegistration {
 	public static final RegistryObject<Block> KYROSIAN_GLASS_BLOCK		= BLOCKS.register("kyrosian_glass_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL)));
 	public static final RegistryObject<Block> KYROSIAN_EDGE_BLOCK		= BLOCKS.register("kyrosian_edge_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL)));
 	public static final RegistryObject<Block> KYROSIAN_TILE_STAIRS			= BLOCKS.register("kyrosian_tile_stairs", ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));
-	public static final RegistryObject<Block> KYROSIAN_GLASS_STAIRS		= BLOCKS.register("kyrosian_glass_stairs", ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));;
-	public static final RegistryObject<Block> KYROSIAN_EDGE_STAIRS		= BLOCKS.register("kyrosian_edge_stairs",  ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));;
+	public static final RegistryObject<Block> KYROSIAN_GLASS_STAIRS		= BLOCKS.register("kyrosian_glass_stairs", ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));
+	public static final RegistryObject<Block> KYROSIAN_EDGE_STAIRS		= BLOCKS.register("kyrosian_edge_stairs",  ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));
+	public static final RegistryObject<Block> KYROSIAN_STARGATE_BLOCK	= BLOCKS.register("kyrosian_stargate_block", () -> new KyrosianStargateBlock());
+	public static final RegistryObject<Block> KYROSIAN_STARGATE_FRAME	= BLOCKS.register("kyrosian_stargate_frame", () -> new KyrosianStargateFrame());
+			
+			//Block(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
     
 	public static final RegistryObject<Attribute> MAX_ENERGY_SHIELD = ATTRIBUTES.register("energy_shield", () -> new RangedAttribute("energy_shield", 0.0D, 0.0D, 1024.0D).setSyncable(true));
 	public static final RegistryObject<Attribute> EVASION = ATTRIBUTES.register("evasion", () -> new RangedAttribute("evasion", 1.0D, 0.0D, 1024.0D).setSyncable(true));	
@@ -161,6 +184,9 @@ public class SkyspaceRegistration {
 	public static final RegistryObject<Item> KYROSIAN_TILE_STAIRS_ITEM			= fromBlock(KYROSIAN_TILE_STAIRS);
 	public static final RegistryObject<Item> KYROSIAN_GLASS_STAIRS_ITEM		= fromBlock(KYROSIAN_GLASS_STAIRS);
 	public static final RegistryObject<Item> KYROSIAN_EDGE_STAIRS_ITEM			= fromBlock(KYROSIAN_EDGE_STAIRS);
+	public static final RegistryObject<Item> KYROSIAN_STARGATE_FRAME_ITEM	= fromBlock(KYROSIAN_STARGATE_FRAME);
+	
+	public static final RegistryObject<Item> FLINT_AND_RUNE = ITEMS.register("flint_and_rune", () -> new FlintAndRune(new Item.Properties().tab(SkyspaceSetup.ITEM_GROUP).durability(64)));
 	
 	public static final RegistryObject<SoundEvent> ENTITY_KYROSIAN_ZOMBIE_AMBIENT = registerSound("synthesized_zombie_ambient", "entity.synthesized_zombie.ambient");
 	public static final RegistryObject<SoundEvent> ENTITY_KYROSIAN_ZOMBIE_DEATH = registerSound("synthesized_zombie_death", "entity.synthesized_zombie.death");
@@ -170,10 +196,14 @@ public class SkyspaceRegistration {
 	public static final RegistryObject<SoundEvent> ENTITY_KYROSIAN_SKELETON_DEATH = registerSound("synthesized_skeleton_death", "entity.synthesized_skeleton.death");
 	public static final RegistryObject<SoundEvent> ENTITY_KYROSIAN_SKELETON_HURT = registerSound("synthesized_skeleton_hurt", "entity.synthesized_skeleton.hurt");
 	public static final RegistryObject<SoundEvent> ENTITY_KYROSIAN_SKELETON_STEP = registerSound("synthesized_skeleton_step", "entity.synthesized_skeleton.step");
+	
+	public static final RegistryObject<SoundEvent> AMBIENT_STARGATE = registerSound("ambient_stargate", "ambient.stargate");
     
 	public static final RegistryObject<SoundEvent> AMBIENT_KYROS_LOOP = registerSound("ambient_kyros_loop", "ambient.kyrosloop");
 	public static final RegistryObject<SoundEvent> KYROS_MUSIC = registerSound("kyros_music", "music.kyrosmusic");
 //	public static final Music KYROS_MUSE = new Music(KYROS_MUSIC.get(), 20, 3000, true);
+	
+
 	
 //    // Helmet Alternatives
 //    public static final RegistryObject<Item> LEATHER_HELMET	= null;	// Str
@@ -327,34 +357,28 @@ public class SkyspaceRegistration {
 //    public static final RegistryObject<Item> NETHERITE_CALIGAE	= null; // Str + Int
 //    public static final RegistryObject<Item> NETHERITE_COAT 	= null; // Dex + Int
 	
-
-
-//    public static final RegistryObject<StructureFeature<JigsawConfiguration>> KYROSIAN_X_ROAD = STRUCTURES.register("kyrosian_x_road", () -> (new KyrosianXRoad(JigsawConfiguration.CODEC)));
-//    public static final RegistryObject<StructureFeature<JigsawConfiguration>> KYROSIAN_Z_ROAD = STRUCTURES.register("kyrosian_z_road", () -> (new KyrosianZRoad(JigsawConfiguration.CODEC)));
-//    public static final RegistryObject<StructureFeature<JigsawConfiguration>> KYROSIAN_INTERSECTION = STRUCTURES.register("kyrosian_platform", () -> (new KyrosianIntersection(JigsawConfiguration.CODEC)));
-
 	public static final BiomeDictionary.Type KYROS = BiomeDictionary.Type.getType("KYROS");
 	
 	public static void addBiomeTypes() {
 		BiomeDictionary.addTypes(KYROS_QUADRANT_AXIS, BiomeDictionary.Type.VOID, BiomeDictionary.Type.END);
 	}
     
-	private static ResourceKey<Biome> makeKey(String name) {
-		// Apparently this resolves biome shuffling /shrug
-		BIOMES.register(name, () -> new Biome.BiomeBuilder()
-				.precipitation(Biome.Precipitation.NONE)
-				.biomeCategory(Biome.BiomeCategory.NONE)
-				//.depth(0)
-				.downfall(0)
-				//.scale(0)
-				.temperature(0)
-				.specialEffects(new BiomeSpecialEffects.Builder().fogColor(0).waterColor(0).waterFogColor(0).skyColor(0).build())
-				.generationSettings(new BiomeGenerationSettings.Builder().build())
-				.mobSpawnSettings(new MobSpawnSettings.Builder().build())
-				.temperatureAdjustment(Biome.TemperatureModifier.NONE)
-				.build());
-		return ResourceKey.create(Registry.BIOME_REGISTRY, Skyspace.prefix(name));
-	}
+//	private static ResourceKey<Biome> makeKey(String name) {
+//		// Apparently this resolves biome shuffling /shrug
+//		BIOMES.register(name, () -> new Biome.BiomeBuilder()
+//				.precipitation(Biome.Precipitation.NONE)
+//				.biomeCategory(Biome.BiomeCategory.NONE)
+//				//.depth(0)
+//				.downfall(0)
+//				//.scale(0)
+//				.temperature(0)
+//				.specialEffects(new BiomeSpecialEffects.Builder().fogColor(0).waterColor(0).waterFogColor(0).skyColor(0).build())
+//				.generationSettings(new BiomeGenerationSettings.Builder().build())
+//				.mobSpawnSettings(new MobSpawnSettings.Builder().build())
+//				.temperatureAdjustment(Biome.TemperatureModifier.NONE)
+//				.build());
+//		return ResourceKey.create(Registry.BIOME_REGISTRY, Skyspace.prefix(name));
+//	}
 	
 	private static ResourceKey<Biome> makeQuadAxis(String name) {
 		BIOMES.register(name, () -> new Biome.BiomeBuilder()
@@ -373,10 +397,22 @@ public class SkyspaceRegistration {
 						// We'll get to music implementation later...
 						.build())
 				.generationSettings(new BiomeGenerationSettings.Builder().build())
-				.mobSpawnSettings(new MobSpawnSettings.Builder().build())
-				.temperatureAdjustment(Biome.TemperatureModifier.FROZEN)
+				.mobSpawnSettings(kyrosSpawning().build()) //new MobSpawnSettings.Builder().build()
+				.temperatureAdjustment(Biome.TemperatureModifier.NONE)
 				.build());
 		return ResourceKey.create(Registry.BIOME_REGISTRY, Skyspace.prefix(name));
+	}
+	
+	public static MobSpawnSettings.Builder kyrosSpawning() {
+		MobSpawnSettings.Builder spawnInfo = new MobSpawnSettings.Builder();
+		BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();	
+		
+		spawnInfo.creatureGenerationProbability(0.65f);
+		
+		spawnInfo.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(SYNTHESIZED_ZOMBIE.get(), 20, 1, 4));
+		spawnInfo.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(SYNTHESIZED_SKELETON.get(), 20, 1, 4));
+		
+		return spawnInfo;
 	}
     
     // Convenient function: Take a RegistryObject<Block> and make a corresponding RegistryObject<Item> from it
@@ -384,107 +420,8 @@ public class SkyspaceRegistration {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPERTIES));
     }
     
-    /**
-     * This is where we set the rarity of your structures and determine if land conforms to it.
-     * See the comments in below for more details.
-     */
-    public static void setupStructures() {
-        setupMapSpacingAndLand(
-                SSStructures.KYROSIAN_MAZE.get(), /* The instance of the structure */
-                new StructureFeatureConfiguration(1 /* average distance apart in chunks between spawn attempts */,
-                        0 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
-                        1 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
-                true);
 
 
-        // Add more structures here and so on
-    }
-    
-    /**
-     * Adds the provided structure to the registry, and adds the separation settings.
-     * The rarity of the structure is determined based on the values passed into
-     * this method in the StructureFeatureConfiguration argument.
-     * This method is called by setupStructures above.
-     */
-    public static <F extends StructureFeature<?>> void setupMapSpacingAndLand(
-            F structure,
-            StructureFeatureConfiguration structureFeatureConfiguration,
-            boolean transformSurroundingLand)
-    {
-        /*
-         * We need to add our structures into the map in StructureFeature class
-         * alongside vanilla structures or else it will cause errors.
-         *
-         * If the registration is setup properly for the structure,
-         * getRegistryName() should never return null.
-         */
-        StructureFeature.STRUCTURES_REGISTRY.put(structure.getRegistryName().toString(), structure);
-
-        /*
-         * Whether surrounding land will be modified automatically to conform to the bottom of the structure.
-         * Basically, it adds land at the base of the structure like it does for Villages and Outposts.
-         * Doesn't work well on structure that have pieces stacked vertically or change in heights.
-         *
-         * Note: The air space this method will create will be filled with water if the structure is below sealevel.
-         * This means this is best for structure above sealevel so keep that in mind.
-         *
-         * NOISE_AFFECTING_FEATURES requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
-         */
-        if(transformSurroundingLand){
-            StructureFeature.NOISE_AFFECTING_FEATURES =
-                    ImmutableList.<StructureFeature<?>>builder()
-                            .addAll(StructureFeature.NOISE_AFFECTING_FEATURES)
-                            .add(structure)
-                            .build();
-        }
-
-        /*
-         * This is the map that holds the default spacing of all structures.
-         * Always add your structure to here so that other mods can utilize it if needed.
-         *
-         * However, while it does propagate the spacing to some correct dimensions from this map,
-         * it seems it doesn't always work for code made dimensions as they read from this list beforehand.
-         *
-         * Instead, we will use the WorldEvent.Load event in StructureTutorialMain to add the structure
-         * spacing from this list into that dimension or to do dimension blacklisting properly.
-         *
-         * DEFAULTS requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg)
-         */
-        StructureSettings.DEFAULTS =
-                ImmutableMap.<StructureFeature<?>, StructureFeatureConfiguration>builder()
-                        .putAll(StructureSettings.DEFAULTS)
-                        .put(structure, structureFeatureConfiguration)
-                        .build();
-
-
-        /*
-         * There are very few mods that relies on seeing your structure in the noise settings registry before the world is made.
-         *
-         * You may see some mods add their spacings to DimensionSettings.BUILTIN_OVERWORLD instead of the NOISE_GENERATOR_SETTINGS loop below but
-         * that field only applies for the default overworld and won't add to other worldtypes or dimensions (like amplified or Nether).
-         * So yeah, don't do DimensionSettings.BUILTIN_OVERWORLD. Use the NOISE_GENERATOR_SETTINGS loop below instead if you must.
-         */
-        BuiltinRegistries.NOISE_GENERATOR_SETTINGS.entrySet().forEach(settings -> {
-            Map<StructureFeature<?>, StructureFeatureConfiguration> structureMap = settings.getValue().structureSettings().structureConfig();
-
-            /*
-             * Pre-caution in case a mod makes the structure map immutable like datapacks do.
-             * I take no chances myself. You never know what another mods does...
-             *
-             * structureConfig requires AccessTransformer (See resources/META-INF/accesstransformer.cfg)
-             */
-            if(structureMap instanceof ImmutableMap){
-                Map<StructureFeature<?>, StructureFeatureConfiguration> tempMap = new HashMap<>(structureMap);
-                tempMap.put(structure, structureFeatureConfiguration);
-                settings.getValue().structureSettings().structureConfig = tempMap;
-            }
-            else{
-                structureMap.put(structure, structureFeatureConfiguration);
-            }
-        });
-    }
-    
-    
     
 	private static RegistryObject<SoundEvent> registerSound(String registryName, String soundPath) {
 		return SFX.register(registryName, () -> createSoundEvent(soundPath));

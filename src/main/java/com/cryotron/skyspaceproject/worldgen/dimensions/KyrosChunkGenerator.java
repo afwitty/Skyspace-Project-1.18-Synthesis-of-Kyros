@@ -270,13 +270,214 @@ public class KyrosChunkGenerator extends ChunkGenerator {
 							}							
 						}								
 					}
-		
+					
+					
+
+					
+					
 					}				
 				}					
 			}
 		
+		// Memory Nexus (Pillars)
+		for (y = -32; y < 32; y += 16) {
+			if (
+					
+					// Quadrant I
+					(chunkpos.x == 17 && chunkpos.z == 17) || 
+					(chunkpos.x == 17 && chunkpos.z == 16) || 
+					(chunkpos.x == 17 && chunkpos.z == 15) || 
+					(chunkpos.x == 16 && chunkpos.z == 17) || 
+					(chunkpos.x == 16 && chunkpos.z == 16) || 
+					(chunkpos.x == 16 && chunkpos.z == 15) || 
+					(chunkpos.x == 15 && chunkpos.z == 17) || 
+					(chunkpos.x == 15 && chunkpos.z == 16) || 
+					(chunkpos.x == 15 && chunkpos.z == 15) ||
+					
+					// Quadrant II
+					(chunkpos.x == -18 && chunkpos.z == 17) || 
+					(chunkpos.x == -18 && chunkpos.z == 16) || 
+					(chunkpos.x == -18 && chunkpos.z == 15) || 
+					(chunkpos.x == -17 && chunkpos.z == 17) || 
+					(chunkpos.x == -17 && chunkpos.z == 16) || 
+					(chunkpos.x == -17 && chunkpos.z == 15) || 
+					(chunkpos.x == -16 && chunkpos.z == 17) || 
+					(chunkpos.x == -16 && chunkpos.z == 16) || 
+					(chunkpos.x == -16 && chunkpos.z == 15) ||
+					
+					// Quadrant III
+					(chunkpos.x == 17 && chunkpos.z == -18) || 
+					(chunkpos.x == 17 && chunkpos.z == -17) || 
+					(chunkpos.x == 17 && chunkpos.z == -16) || 
+					(chunkpos.x == 16 && chunkpos.z == -18) || 
+					(chunkpos.x == 16 && chunkpos.z == -17) || 
+					(chunkpos.x == 16 && chunkpos.z == -16) || 
+					(chunkpos.x == 15 && chunkpos.z == -18) || 
+					(chunkpos.x == 15 && chunkpos.z == -17) || 
+					(chunkpos.x == 15 && chunkpos.z == -16) ||
+					
+					// Quadrant IV
+					(chunkpos.x == -18 && chunkpos.z == -18) || 
+					(chunkpos.x == -18 && chunkpos.z == -17) || 
+					(chunkpos.x == -18 && chunkpos.z == -16) || 
+					(chunkpos.x == -17 && chunkpos.z == -18) || 
+					(chunkpos.x == -17 && chunkpos.z == -17) || 
+					(chunkpos.x == -17 && chunkpos.z == -16) || 
+					(chunkpos.x == -16 && chunkpos.z == -18) || 
+					(chunkpos.x == -16 && chunkpos.z == -17) || 
+					(chunkpos.x == -16 && chunkpos.z == -16) 
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+
+		}
+		
+		
+		for (y = -128; y < -64; y += 16) {
+			if ( (chunkpos.x <= 14 && chunkpos.z <= 14)  &&
+				 (chunkpos.x >= -15 && chunkpos.z >= -15)
+					){
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			if (	(chunkpos.x <= 20 && chunkpos.z <= 14)  &&
+					 (chunkpos.x >= -21 && chunkpos.z >= -15)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			
+			if (	(chunkpos.x <= 14 && chunkpos.z <= 20)  &&
+					 (chunkpos.x >= -15 && chunkpos.z >= -21)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+		}
+		for (y = 64; y < 128; y += 16) {
+			if ( (chunkpos.x <= 14 && chunkpos.z <= 14)  &&
+				 (chunkpos.x >= -15 && chunkpos.z >= -15)
+					){
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}		
+			if (	(chunkpos.x <= 20 && chunkpos.z <= 14)  &&
+					 (chunkpos.x >= -21 && chunkpos.z >= -15)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			
+			if (	(chunkpos.x <= 14 && chunkpos.z <= 20)  &&
+					 (chunkpos.x >= -15 && chunkpos.z >= -21)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			
+		}
+		
+		// Nexus Walls on x and z < 16
+		for (y = -128; y <= 128; y += 16) {
+			if (	(chunkpos.x <= 24 && chunkpos.z <= 14)  &&
+					 (chunkpos.x > 20 && chunkpos.z >= -15)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			if (	(chunkpos.x <= 14 && chunkpos.z <= 24)  &&
+					 (chunkpos.x >= -15 && chunkpos.z > 20)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			if (	(chunkpos.x >= -25 && chunkpos.z <= 14)  &&
+					 (chunkpos.x < -21 && chunkpos.z >= -15)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			if (	(chunkpos.x <= 14 && chunkpos.z >= -25)  &&
+					 (chunkpos.x >= -15 && chunkpos.z < -21)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+		}
+		
 		// TEST
 		// Chunk Cubes at the edges.
+		
+		for (y = -128; y <= 128; y += 16) {
+			if (	(chunkpos.x <= 24 && chunkpos.z <= 14)  &&
+					 (chunkpos.x > 20 && chunkpos.z >= -15)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			if (	(chunkpos.x <= 14 && chunkpos.z <= 24)  &&
+					 (chunkpos.x >= -15 && chunkpos.z > 20)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			if (	(chunkpos.x <= -25 && chunkpos.z <= 14)  &&
+					 (chunkpos.x > -21 && chunkpos.z >= -15)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			if (	(chunkpos.x <= 14 && chunkpos.z <= -25)  &&
+					 (chunkpos.x >= -15 && chunkpos.z > -21)
+					) {
+				KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+			}
+			
+			// Nexus Walls
+			if ((chunkpos.x <= 21 && chunkpos.z <= 9) &&
+					(chunkpos.x >= -22 && chunkpos.z >= 8)				
+						) {
+						KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+				}				
+			if ((chunkpos.x <= 21 && chunkpos.z >= -10) &&
+					(chunkpos.x >= -22 && chunkpos.z <= -9)				
+						) {
+						KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+				}
+			if ((chunkpos.z <= 21 && chunkpos.x <= 9) &&
+					(chunkpos.z >= -22 && chunkpos.x >= 8)				
+						) {
+						KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+				}				
+			if ((chunkpos.z <= 21 && chunkpos.x >= -10) &&
+					(chunkpos.z >= -22 && chunkpos.x <= -9)				
+						) {
+						KyrosianChunkCubeManual.genChunkCube(0, y, 0, chunk, pos);		
+				}
+		}
+		
+		// Nexus Entrance
+		for (y = -32; y < 32; y++) {
+			for (int xx = 0; xx < 16; xx++) {
+				for (int zz = 0; zz < 16; zz++) {
+					
+					for (int xxx = 7; xxx <= 10; xxx++) {
+						for (int zzz = 7; zzz <= 10; zzz++) {
+							if( chunkpos.x == xxx && chunkpos.z == zzz) {
+								chunk.setBlockState(pos.set(xx,y,zz), air, false);				
+							}							
+						}		
+						for (int zzz = -8; zzz >= -11; zzz--) {
+							if( chunkpos.x == xxx && chunkpos.z == zzz) {
+								chunk.setBlockState(pos.set(xx,y,zz), air, false);				
+							}							
+						}								
+					}
+					
+					for (int xxx = -8; xxx >= -11; xxx--) {
+						for (int zzz = 7; zzz <= 10; zzz++) {
+							if( chunkpos.x == xxx && chunkpos.z == zzz) {
+								chunk.setBlockState(pos.set(xx,y,zz), air, false);				
+							}							
+						}		
+						for (int zzz = -8; zzz >= -11; zzz--) {
+							if( chunkpos.x == xxx && chunkpos.z == zzz) {
+								chunk.setBlockState(pos.set(xx,y,zz), air, false);				
+							}							
+						}								
+					}
+				}
+			}
+		}
+
+
 
 
 		

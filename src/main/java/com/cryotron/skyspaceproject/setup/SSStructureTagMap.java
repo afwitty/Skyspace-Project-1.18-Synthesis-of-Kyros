@@ -14,7 +14,7 @@ public final class SSStructureTagMap {
     private SSStructureTagMap() {}
 
     public enum STRUCTURE_TAGS {
-		MAZE
+		MAZE, NEXUS
     }
 
     public static final Map<StructureFeature<?>, Set<STRUCTURE_TAGS>> TAGGED_STRUCTURES = new HashMap<>();
@@ -22,6 +22,7 @@ public final class SSStructureTagMap {
     
     public static void setupTags(){
         addTags(SSStructures.KYROSIAN_MAZE.get(), Stream.of(STRUCTURE_TAGS.MAZE).collect(Collectors.toSet()));
+        addTags(SSStructures.KYROSIAN_NEXUS.get(), Stream.of(STRUCTURE_TAGS.NEXUS).collect(Collectors.toSet()));
     }
 	
     /**

@@ -1,7 +1,11 @@
 {
   "item.skyspaceproject.synthesized_zombie": "Synthesized Zombie Spawn Egg",
   "item.skyspaceproject.synthesized_skeleton": "Synthesized Skeleton Spawn Egg",
-  "item.skyspaceproject.archon": "Archon Spawn Egg",
+  "item.skyspaceproject.kyrosian_archon": "Archon Spawn Egg",
+  "item.skyspaceproject.kyrosian_enforcer": "Enforcer Spawn Egg",
+  "item.skyspaceproject.kyrosian_mutilator": "Mutilator Spawn Egg",
+  "item.skyspaceproject.kyrosian_deacon": "Deacon Spawn Egg",
+  "item.skyspaceproject.flint_and_rune": "Flint and Rune",
 
   "block.skyspaceproject.kyrosian_tile_block": "Kyrosian Tile Block",
   "block.skyspaceproject.kyrosian_glass_block": "Kyrosian Glass Block",
@@ -9,15 +13,14 @@
   "block.skyspaceproject.kyrosian_tile_stairs": "Kyrosian Tile Stairs",
   "block.skyspaceproject.kyrosian_glass_stairs": "Kyrosian Glass Stairs",
   "block.skyspaceproject.kyrosian_edge_stairs": "Kyrosian Edge Stairs",
+  "block.skyspaceproject.kyrosian_stargate_frame": "Stargate Frame",
   
   "entity.skyspaceproject.synthesized_zombie": "Synthesized Zombie",
   "entity.skyspaceproject.synthesized_skeleton": "Synthesized Skeleton",
-
   "entity.skyspaceproject.kyrosian_archon": "Archon",
   "entity.skyspaceproject.kyrosian_enforcer": "Enforcer",
   "entity.skyspaceproject.kyrosian_mutilator": "Mutilator",
   "entity.skyspaceproject.kyrosian_deacon": "Deacon",
-
 
   "subtitle.entity.synthesizedzombie.ambient": "Synthesized Zombie groans",
   "subtitle.entity.synthesizedzombie.death": "Synthesized Zombie dies",
@@ -28,8 +31,9 @@
   "subtitle.entity.synthesizedskeleton.death": "Synthesized Skeleton dies",
   "subtitle.entity.synthesizedskeleton.hurt": "Synthesized Skeleton hurts",
   "subtitle.entity.synthesizedskeleton.step": "Synthesized Skeleton treads",
-  
-  "subtitle.ambient.kyrosloop": "Kyrosian Winds howling"
+
+  "subtitle.ambient.stargate": "Kyrosian Stargate chimes",  
+  "subtitle.ambient.kyrosloop": "Kyrosian Winds howling",
 
   "itemGroup.skyspace_group": "Skyspace Project"  
 }

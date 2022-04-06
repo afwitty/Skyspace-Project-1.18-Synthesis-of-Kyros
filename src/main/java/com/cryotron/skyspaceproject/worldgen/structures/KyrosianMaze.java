@@ -30,7 +30,10 @@ import java.util.Random;
 import org.apache.commons.lang3.ArrayUtils;
 import org.codehaus.plexus.util.StringUtils;
 
+import com.google.common.collect.ImmutableList;
 import com.cryotron.skyspaceproject.Skyspace;
+import com.cryotron.skyspaceproject.setup.SSStructures;
+import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 import com.cryotron.skyspaceproject.util.GeneralUtils;
 import com.cryotron.skyspaceproject.util.Mutable;
 import com.cryotron.skyspaceproject.worldgen.structures.codeconfigs.GenericJigsawStructureCodeConfig;
@@ -39,8 +42,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.NoiseColumn;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -48,8 +53,12 @@ import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfigura
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
+import net.minecraftforge.common.util.Lazy;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -66,6 +75,9 @@ public class KyrosianMaze extends GenericJigsawStructure {
     public static String[][][] ChunkNodeIV = new String[MazeSize][32][MazeSize]; //1875000
 	static int dirSel;
 	static int elev;
+	
+
+	
 	
     public KyrosianMaze(Predicate<PieceGeneratorSupplier.Context<NoneFeatureConfiguration>> locationCheckPredicate, Function<PieceGeneratorSupplier.Context<NoneFeatureConfiguration>, Optional<PieceGenerator<NoneFeatureConfiguration>>> pieceCreationPredicate) {
         super(locationCheckPredicate, pieceCreationPredicate);
@@ -86,14 +98,13 @@ public class KyrosianMaze extends GenericJigsawStructure {
     public GenerationStep.Decoration step() {
         return GenerationStep.Decoration.SURFACE_STRUCTURES;
     }
-    
-
-    public Optional<PieceGenerator<NoneFeatureConfiguration>> generatePieces(PieceGeneratorSupplier.Context<NoneFeatureConfiguration> context, GenericJigsawStructureCodeConfig config, int x, int y, int z) {
+   
+    public Optional<PieceGenerator<NoneFeatureConfiguration>> generatePiecesII(PieceGeneratorSupplier.Context<NoneFeatureConfiguration> context, GenericJigsawStructureCodeConfig config, int x, int y, int z) {
 
         		
         		//new BlockPos(context.chunkPos().getMinBlockX(), context.chunkGenerator().getSeaLevel(), context.chunkPos().getMinBlockZ());
 
-        ResourceLocation structureID = ForgeRegistries.STRUCTURE_FEATURES.getKey(this);
+        ResourceLocation structureID = ForgeRegistries.STRUCTURE_FEATURES.getKey(this);        
         
         // Quadrant I
 		if (context.chunkPos().x >= 18 && context.chunkPos().z >= 18 && context.chunkPos().x <  200 && context.chunkPos().z < 200) { // 17  + MazeSize - 2
@@ -132,15 +143,6 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		}
 		
     	return Optional.empty();
-        
-//		if (context.chunkPos().x >= 18 && context.chunkPos().z >= 18 && context.chunkPos().x < 18 + MazeSize-2 && context.chunkPos().z < 18 + MazeSize-2) {
-//			
-//			
-
-//		}
-//		else {
-//			return Optional.empty();
-//		}
     }
     
 	public static void mapChunkNodes() {
@@ -287,7 +289,6 @@ public class KyrosianMaze extends GenericJigsawStructure {
 	    	
 	    	for (int x = 1; x < 1000; x++) {
 	        	for (int z = 1; z < 1000; z++) {	
-
 	        		
 	        		if (ChunkNodeI[x][y][z] == null) {
 	            		
@@ -307,7 +308,8 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		                        ChunkNodeI[x][y][z-1] == "continuous/kyrosian_3-way_road_facing_negx"  ||
 		                        ChunkNodeI[x][y][z-1] == "continuous/kyrosian_3-way_road_facing_negz"  ||
 		                        
-		                        ChunkNodeI[x][y][z-1] == "continuous/kyrosian_4-way_road"
+		                        ChunkNodeI[x][y][z-1] == "continuous/kyrosian_4-way_road" ||
+		                        ChunkNodeI[x][y][z-1] == "dwelling/kyrosian_mutilator_chunk"
 	                        );
 	        			
 	        			boolean ConnectionFromNegX = (
@@ -322,7 +324,8 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		                        ChunkNodeI[x-1][y][z] == "continuous/kyrosian_3-way_road_facing_negx" 	 	||
 		                        ChunkNodeI[x-1][y][z] == "continuous/kyrosian_3-way_road_facing_negz" 	 	||
 		                            
-		                        ChunkNodeI[x-1][y][z] == "continuous/kyrosian_4-way_road"
+		                        ChunkNodeI[x-1][y][z] == "continuous/kyrosian_4-way_road" ||
+		                        ChunkNodeI[x-1][y][z] == "dwelling/kyrosian_mutilator_chunk"
 	        				);
 	        			
 	        			boolean DisconnectionFromNegZ = (
@@ -430,7 +433,10 @@ public class KyrosianMaze extends GenericJigsawStructure {
 	        				availablePieces = ArrayUtils.add(availablePieces, "continuous/kyrosian_2-way_xtonegz_corner");     			        				  
 	        			}
 	            		
-
+	        			if ((x % 20 == 0) && (y == 16) && (z % 20 == 0)) {
+	        				availablePieces = ArrayUtils.removeAll(availablePieces);
+	        				availablePieces = ArrayUtils.add(availablePieces, "dwelling/kyrosian_mutilator_chunk");
+	        			}
 	        			
 	        			pieceSel = rand.nextInt(availablePieces.length);
 	        			selectedPiece = availablePieces[pieceSel];
@@ -606,7 +612,8 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		                        ChunkNodeII[x][y][z-1] == "continuous/kyrosian_3-way_road_facing_negx"  ||
 		                        ChunkNodeII[x][y][z-1] == "continuous/kyrosian_3-way_road_facing_negz"  ||
 		                        
-		                        ChunkNodeII[x][y][z-1] == "continuous/kyrosian_4-way_road"
+		                        ChunkNodeII[x][y][z-1] == "continuous/kyrosian_4-way_road" ||
+		                        ChunkNodeII[x][y][z-1] == "dwelling/kyrosian_deacon_chunk"
 	                        );
 	        			
 	        			boolean ConnectionFromNegX = (
@@ -621,7 +628,8 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		                        ChunkNodeII[x-1][y][z] == "continuous/kyrosian_3-way_road_facing_negx" 	 	||
 		                        ChunkNodeII[x-1][y][z] == "continuous/kyrosian_3-way_road_facing_negz" 	 	||
 		                            
-		                        ChunkNodeII[x-1][y][z] == "continuous/kyrosian_4-way_road"
+		                        ChunkNodeII[x-1][y][z] == "continuous/kyrosian_4-way_road" ||
+		                        ChunkNodeII[x-1][y][z] ==  "dwelling/kyrosian_deacon_chunk"
 	        				);
 	        			
 	        			boolean DisconnectionFromNegZ = (
@@ -729,7 +737,10 @@ public class KyrosianMaze extends GenericJigsawStructure {
 	        				availablePieces = ArrayUtils.add(availablePieces, "continuous/kyrosian_2-way_xtonegz_corner");     			        				  
 	        			}
 	            		
-
+	        			if ((x % 20 == 0) && (y == 16) && (z % 20 == 0)) {
+	        				availablePieces = ArrayUtils.removeAll(availablePieces);
+	        				availablePieces = ArrayUtils.add(availablePieces, "dwelling/kyrosian_deacon_chunk");
+	        			}
 	        			
 	        			pieceSel = rand.nextInt(availablePieces.length);
 	        			selectedPiece = availablePieces[pieceSel];
@@ -905,7 +916,8 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		                        ChunkNodeIII[x][y][z-1] == "continuous/kyrosian_3-way_road_facing_negx"  ||
 		                        ChunkNodeIII[x][y][z-1] == "continuous/kyrosian_3-way_road_facing_negz"  ||
 		                        
-		                        ChunkNodeIII[x][y][z-1] == "continuous/kyrosian_4-way_road"
+		                        ChunkNodeIII[x][y][z-1] == "continuous/kyrosian_4-way_road" ||
+		                        ChunkNodeIII[x][y][z-1] == "continuous/kyrosian_enforcer_chunk"
 	                        );
 	        			
 	        			boolean ConnectionFromNegX = (
@@ -920,7 +932,8 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		                        ChunkNodeIII[x-1][y][z] == "continuous/kyrosian_3-way_road_facing_negx" 	 	||
 		                        ChunkNodeIII[x-1][y][z] == "continuous/kyrosian_3-way_road_facing_negz" 	 	||
 		                            
-		                        ChunkNodeIII[x-1][y][z] == "continuous/kyrosian_4-way_road"
+		                        ChunkNodeIII[x-1][y][z] == "continuous/kyrosian_4-way_road" ||
+		                        ChunkNodeIII[x-1][y][z] == "continuous/kyrosian_enforcer_chunk"
 	        				);
 	        			
 	        			boolean DisconnectionFromNegZ = (
@@ -1028,7 +1041,10 @@ public class KyrosianMaze extends GenericJigsawStructure {
 	        				availablePieces = ArrayUtils.add(availablePieces, "continuous/kyrosian_2-way_xtonegz_corner");     			        				  
 	        			}
 	            		
-
+//	        			if ((x % 20 == 0) && (y == 16) && (z % 20 == 0)) {
+//	        				availablePieces = ArrayUtils.removeAll(availablePieces);
+//	        				availablePieces = ArrayUtils.add(availablePieces, "dwelling/kyrosian_enforcer_chunk");
+//	        			}
 	        			
 	        			pieceSel = rand.nextInt(availablePieces.length);
 	        			selectedPiece = availablePieces[pieceSel];
@@ -1204,7 +1220,8 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		                        ChunkNodeIV[x][y][z-1] == "continuous/kyrosian_3-way_road_facing_negx"  ||
 		                        ChunkNodeIV[x][y][z-1] == "continuous/kyrosian_3-way_road_facing_negz"  ||
 		                        
-		                        ChunkNodeIV[x][y][z-1] == "continuous/kyrosian_4-way_road"
+		                        ChunkNodeIV[x][y][z-1] == "continuous/kyrosian_4-way_road" ||
+		                        ChunkNodeIV[x][y][z-1] == "dwelling/kyrosian_archon_chunk"
 	                        );
 	        			
 	        			boolean ConnectionFromNegX = (
@@ -1219,7 +1236,8 @@ public class KyrosianMaze extends GenericJigsawStructure {
 		                        ChunkNodeIV[x-1][y][z] == "continuous/kyrosian_3-way_road_facing_negx" 	 	||
 		                        ChunkNodeIV[x-1][y][z] == "continuous/kyrosian_3-way_road_facing_negz" 	 	||
 		                            
-		                        ChunkNodeIV[x-1][y][z] == "continuous/kyrosian_4-way_road"
+		                        ChunkNodeIV[x-1][y][z] == "continuous/kyrosian_4-way_road" ||
+		                        ChunkNodeIV[x-1][y][z] == "dwelling/kyrosian_archon_chunk"
 	        				);
 	        			
 	        			boolean DisconnectionFromNegZ = (
@@ -1327,7 +1345,10 @@ public class KyrosianMaze extends GenericJigsawStructure {
 	        				availablePieces = ArrayUtils.add(availablePieces, "continuous/kyrosian_2-way_xtonegz_corner");     			        				  
 	        			}
 	            		
-
+	        			if ((x % 20 == 0) && (y == 16) && (z % 20 == 0)) {
+	        				availablePieces = ArrayUtils.removeAll(availablePieces);
+	        				availablePieces = ArrayUtils.add(availablePieces, "dwelling/kyrosian_archon_chunk");
+	        			}
 	        			
 	        			pieceSel = rand.nextInt(availablePieces.length);
 	        			selectedPiece = availablePieces[pieceSel];
@@ -1338,5 +1359,18 @@ public class KyrosianMaze extends GenericJigsawStructure {
 	    	}
     	}
 	}
+	
+    private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_MONSTER = Lazy.of(() -> ImmutableList.of(
+            new MobSpawnSettings.SpawnerData(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), 200, 1, 4),
+            new MobSpawnSettings.SpawnerData(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), 200, 1, 4)
+    ));
 
+    
+    public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
+        if(event.getStructure() == SSStructures.KYROSIAN_MAZE.get()) {
+            event.addEntitySpawns(MobCategory.MONSTER, STRUCTURE_MONSTER.get());
+        }
+    }
+
+	
 }

@@ -65,6 +65,14 @@
 			"skyspaceproject:entity/synthesized_skeleton/step4"
 		]
 	},	
+	"ambient.stargate": {
+		"subtitle": "subtitle.ambient.stargate",
+		"sounds": [
+			"skyspaceproject:ambient/stargate1",
+			"skyspaceproject:ambient/stargate2",
+			"skyspaceproject:ambient/stargate3"
+		]
+	},
 	"ambient.kyrosloop": {
 		"subtitle": "subtitle.ambient.kyrosloop",
 		"sounds": [

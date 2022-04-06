@@ -62,6 +62,10 @@ public class KyrosianArchon extends Monster implements IAnimatable {
 		    	return 16f;
 		    }
 		    
+			@Override
+			public boolean removeWhenFarAway(double p_213397_1_) {
+				return false;
+			}
 		   
 		    
 }

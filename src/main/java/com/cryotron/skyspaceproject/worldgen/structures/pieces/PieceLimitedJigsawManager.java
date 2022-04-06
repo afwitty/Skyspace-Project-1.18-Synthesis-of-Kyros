@@ -248,6 +248,10 @@ public class PieceLimitedJigsawManager {
             });    		
     	}
     	
+    	if (context.chunkPos().x == 16 && context.chunkPos().z == 16) {
+    		
+    	}
+    	
 		return Optional.empty();
 
     }
@@ -316,7 +320,7 @@ public class PieceLimitedJigsawManager {
             // Collect data from params regarding piece to process
             StructurePoolElement pieceBlueprint = piece.getElement();
             BlockPos piecePos = piece.getPosition();
-            Rotation pieceRotation = piece.getRotation();
+            Rotation pieceRotation = Rotation.CLOCKWISE_180;
             BoundingBox pieceBoundingBox = piece.getBoundingBox();
             int pieceMinY = pieceBoundingBox.minY();
             MutableObject<BoxOctree> parentOctree = new MutableObject<>();           
@@ -386,7 +390,7 @@ public class PieceLimitedJigsawManager {
                               
                 if (minYreached && maxYreached) {
 
-            		Skyspace.LOGGER.info("Both Minimum and Maximmum Y reached. Returning.");
+//            		Skyspace.LOGGER.info("Both Minimum and Maximum Y reached. Returning.");
                 	return;
                 }
                 
