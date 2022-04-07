@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " q ",
+    "qbq",
+    " q "
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:lapis_block"
+    },
+    "q" : {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "skyspaceproject:kyrosian_stargate_frame"
+  }
+}

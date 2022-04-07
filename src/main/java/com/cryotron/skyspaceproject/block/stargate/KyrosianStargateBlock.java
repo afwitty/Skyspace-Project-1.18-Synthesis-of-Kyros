@@ -116,8 +116,17 @@ public class KyrosianStargateBlock extends NetherPortalBlock {
 				teleportToDimensionK(entity, kyrosianOrigin, ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("skyspaceproject:kyros")));
 			} else {
 				entity.setPortalCooldown();
-				teleportToDimensionO(entity, savedPoint, Level.OVERWORLD);
-				entity.teleportTo(savedPoint.getX(), savedPoint.getY(), savedPoint.getZ());
+				if (savedPoint != null) {
+					teleportToDimensionO(entity, savedPoint, Level.OVERWORLD);
+					entity.teleportTo(savedPoint.getX(), savedPoint.getY(), savedPoint.getZ());
+				}
+				else {
+//					teleportToDimensionO(entity, pos, Level.OVERWORLD); // if the player has not entered the portal... Fix this.
+//					entity.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+					if (entity instanceof ServerPlayer player) {
+						teleportToVI(player, pos.north(), Level.OVERWORLD);
+					}
+				}
 				Skyspace.LOGGER.info("RETURNING TO OVERWORLD: " + entity.getOnPos());
 			}
 		}
@@ -133,5 +142,25 @@ public class KyrosianStargateBlock extends NetherPortalBlock {
 		entity.changeDimension(entity.getServer().getLevel(destinationType),
 				new KyrosianStargateTeleporter(entity.getServer().getLevel(destinationType), pos));
 	}
+
+    private void teleportToVI(ServerPlayer player, BlockPos pos, ResourceKey<Level> id) {
+        ServerLevel world = player.getServer().getLevel(id);
+        teleportVII(player, world, new BlockPos(pos.getX(), pos.getY(), pos.getZ()), true);
+    }
+	
+    public static void teleportVII(ServerPlayer entity, ServerLevel destination, BlockPos pos, boolean findTop) {
+        entity.changeDimension(destination, new ITeleporter() {
+            @Override
+            public Entity placeEntity(Entity entity, ServerLevel currentWorld, ServerLevel destWorld, float yaw, Function<Boolean, Entity> repositionEntity) {
+                entity = repositionEntity.apply(false);
+                int y = pos.getY();
+                if (findTop) {
+                    y = destination.getHeight(Heightmap.Types.WORLD_SURFACE_WG, pos.getX(), pos.getZ());
+                }
+                entity.teleportTo(pos.getX(), y, pos.getZ());
+                return entity;
+            }
+        });
+    }
 
 }
