@@ -7,13 +7,24 @@ import com.cryotron.skyspaceproject.capabilities.CapabilityList;
 import com.cryotron.skyspaceproject.capabilities.energyshield.EnergyShieldCapabilityHandler;
 import com.cryotron.skyspaceproject.capabilities.energyshield.IEnergyShieldCapability;
 import com.cryotron.skyspaceproject.entities.EnergyShieldEntity;
+import com.cryotron.skyspaceproject.setup.CustomisableParticleType;
+import com.cryotron.skyspaceproject.setup.ESParticle;
 import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.particle.CritParticle;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -90,16 +101,24 @@ public class DamageTakenEvent {
 		LivingEntity entity = event.getEntityLiving();		
 		float dammie = event.getAmount();
 		Level worldin = event.getEntity().level;
+		ServerLevel sworldin = (ServerLevel) event.getEntity().level;
+		int randNum = rand.nextInt(2);
 		BlockPos blockpos = event.getEntity().blockPosition();
+		String sourcestring = event.getSource().toString();
+		double px = blockpos.getX() + rand.nextFloat();
+		double py = blockpos.getY() + rand.nextFloat() + 1;
+		double pz = blockpos.getZ() + rand.nextFloat();
+		double vx = (rand.nextFloat() - 0.5) / 2.;
+		double vy = (rand.nextFloat() - 0.5) / 2.;
+		double vz = (rand.nextFloat() - 0.5) / 2.;
+//		DamageSource source = new DamageSource("EntityDamage");
 		LazyOptional<IEnergyShieldCapability> es = entity.getCapability(CapabilityList.ENERGY_SHIELD);		
 				
 		es.ifPresent(cap -> {
 			ENERGY_SHIELD_VALUE = (double) cap.getEnergyShield();
 		});;
-		
-		
-		Skyspace.LOGGER.info("LivingDamageEvent Fired! Entity fired: " + entity.getName().getString() + " for " + dammie + " damage.");
-		//Skyspace.LOGGER.info("esValue: " + esValue);
+			
+		Skyspace.LOGGER.info("LivingDamageEvent Fired! Entity fired: " + entity.getName().getString() + " for " + dammie + " damage in " + blockpos.getX() + ", " + blockpos.getY() + ", " + blockpos.getZ() + " in " + worldin.dimension().toString());
 
 		if (entity.getCapability(CapabilityList.ENERGY_SHIELD).isPresent()) {
 			
@@ -115,10 +134,13 @@ public class DamageTakenEvent {
 					});					
 					
 					event.setAmount(0);
-					for (int i = 0; i < dammie; i++) {
-						worldin.addParticle(
-									SkyspaceRegistration.ENERGY_SHIELD_DAMAGE_INDICATOR.get(), blockpos.getX(), blockpos.getY() + 1, blockpos.getZ(), 100,100,100
-								);
+					event.getSource();
+				
+					
+					Skyspace.LOGGER.info("Damage Source is: " + event.getSource());
+					
+					if (sourcestring.contains("EntityDamageSource")) {
+						sworldin.sendParticles(SkyspaceRegistration.ENERGY_SHIELD_DAMAGE_INDICATOR.get(), px, py, pz, (int) dammie, vx, vy, vz, 0);
 					}
 					
 				}

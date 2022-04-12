@@ -23,9 +23,11 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockBehaviour.StatePredicate;
 import net.minecraft.world.level.levelgen.StructureSettings;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
@@ -84,6 +86,7 @@ public class SkyspaceRegistration {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ID);
     public static final DeferredRegister<SoundEvent> SFX = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ID);
     public static final DeferredRegister<ParticleType<?>> PART = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, ID);
+
     
     public static void init() {
     	IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -101,7 +104,8 @@ public class SkyspaceRegistration {
     public static final BlockBehaviour.Properties ORE_PROPERTIES = BlockBehaviour.Properties.of(Material.STONE).strength(2f).requiresCorrectToolForDrops();
     public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(SkyspaceSetup.ITEM_GROUP);
     
-    public static final RegistryObject<SimpleParticleType> ENERGY_SHIELD_DAMAGE_INDICATOR = PART.register("energy_shield_damage_indicator", () -> new SimpleParticleType(false));
+    public static final RegistryObject<SimpleParticleType> ENERGY_SHIELD_DAMAGE_INDICATOR = PART.register("energy_shield_damage_indicator", () -> new SimpleParticleType(true));
+   // public static final RegistryObject<ParticleType<CustomisableParticleType.Data>> ENERGY_SHIELD_DAMAGE_INDICATOR_II = PART.register("energy_shield_damage_indicator_ii", () -> new CustomisableParticleType(true));    
     
 	public static final ResourceKey<Biome> KYROS_QUADRANT_AXIS = makeQuadAxis("kyros_quadrant_axis"); 
 //	BIOMES.register("kyros_quadrant_axis", () ->
@@ -114,7 +118,7 @@ public class SkyspaceRegistration {
 //		));//
 
     public static final RegistryObject<Block> KYROSIAN_TILE_BLOCK 			= BLOCKS.register("kyrosian_tile_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> KYROSIAN_GLASS_BLOCK		= BLOCKS.register("kyrosian_glass_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL)));
+	public static final RegistryObject<Block> KYROSIAN_GLASS_BLOCK		= BLOCKS.register("kyrosian_glass_block", () -> new GlassBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL).noOcclusion()))));
 	public static final RegistryObject<Block> KYROSIAN_EDGE_BLOCK		= BLOCKS.register("kyrosian_edge_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL)));
 	public static final RegistryObject<Block> KYROSIAN_TILE_STAIRS			= BLOCKS.register("kyrosian_tile_stairs", ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));
 	public static final RegistryObject<Block> KYROSIAN_GLASS_STAIRS		= BLOCKS.register("kyrosian_glass_stairs", ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));
