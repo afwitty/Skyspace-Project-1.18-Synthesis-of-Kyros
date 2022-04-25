@@ -74,7 +74,6 @@ import com.cryotron.skyspaceproject.entities.kyrosian_mutilator.KyrosianMutilato
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeleton;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
 import com.cryotron.skyspaceproject.items.FlintAndRune;
-import com.cryotron.skyspaceproject.registers.SkyspaceGroup;
 import com.cryotron.skyspaceproject.worldgen.structures.KyrosianMaze;
 
 public class SkyspaceRegistration {
@@ -424,8 +423,6 @@ public class SkyspaceRegistration {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEM_PROPERTIES));
     }
     
-
-
     
 	private static RegistryObject<SoundEvent> registerSound(String registryName, String soundPath) {
 		return SFX.register(registryName, () -> createSoundEvent(soundPath));

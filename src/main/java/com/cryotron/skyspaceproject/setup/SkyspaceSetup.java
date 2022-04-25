@@ -45,7 +45,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 @Mod.EventBusSubscriber(modid = Skyspace.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SkyspaceSetup {
 	
-	public static final String TAB_NAME = "Skyspace Project";
+	public static final String TAB_NAME = "skyspace_group";
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogManager.getLogger(Skyspace.ID + " Mod Event Subscriber");
