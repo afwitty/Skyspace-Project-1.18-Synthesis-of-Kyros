@@ -117,7 +117,7 @@ public class SkyspaceRegistration {
 //		));//
 
     public static final RegistryObject<Block> KYROSIAN_TILE_BLOCK 			= BLOCKS.register("kyrosian_tile_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL)));
-	public static final RegistryObject<Block> KYROSIAN_GLASS_BLOCK		= BLOCKS.register("kyrosian_glass_block", () -> new GlassBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL).noOcclusion()))));
+	public static final RegistryObject<Block> KYROSIAN_GLASS_BLOCK		= BLOCKS.register("kyrosian_glass_block", () -> new GlassBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL).noOcclusion()));
 	public static final RegistryObject<Block> KYROSIAN_EDGE_BLOCK		= BLOCKS.register("kyrosian_edge_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(2.0F, 6.0F).sound(SoundType.METAL)));
 	public static final RegistryObject<Block> KYROSIAN_TILE_STAIRS			= BLOCKS.register("kyrosian_tile_stairs", ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));
 	public static final RegistryObject<Block> KYROSIAN_GLASS_STAIRS		= BLOCKS.register("kyrosian_glass_stairs", ()  -> new StairBlock(() -> KYROSIAN_TILE_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.copy(KYROSIAN_TILE_BLOCK.get())));

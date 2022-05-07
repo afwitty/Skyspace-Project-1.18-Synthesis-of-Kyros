@@ -34,7 +34,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.GeckoLib;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -61,7 +60,7 @@ public class SkyspaceSetup {
 		IEventBus modbus = FMLJavaModLoadingContext.get().getModEventBus();
 		
         //Initalize GeckoLib
-    	GeckoLibMod.DISABLE_IN_DEV = true;
+    	//GeckoLibMod.DISABLE_IN_DEV = true;
         GeckoLib.initialize();
 		
 		KyrosianMaze.mapChunkNodes();			// Mapping Quadrant I Maze

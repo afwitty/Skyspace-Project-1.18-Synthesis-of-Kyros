@@ -1,7 +1,7 @@
 package com.cryotron.skyspaceproject.entities.kyrosian_deacon;
 
 import com.cryotron.skyspaceproject.Skyspace;
-import com.cryotron.skyspaceproject.entities.kyrosian_archon.KyrosianArchon;
+import com.cryotron.skyspaceproject.entities.kyrosian_deacon.KyrosianDeacon;
 
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
