@@ -10,7 +10,6 @@ import net.minecraftforge.common.util.INBTSerializable;
 public interface IEnergyShieldCapability extends INBTSerializable<CompoundTag> {
 	
 	ResourceLocation ID = new ResourceLocation(Skyspace.ID, "energy_shield");
-	ResourceLocation ID2 = new ResourceLocation(Skyspace.ID, "energy_shield_recharge_timer");
 
 	void setEntity(LivingEntity entity);
 
@@ -31,10 +30,6 @@ public interface IEnergyShieldCapability extends INBTSerializable<CompoundTag> {
 //	void replenishShield();
 
 	void setEnergyShield(float amount);
-	
-	float getEnergyShieldRechargeTimer();
-	
-	void setEnergyShieldRechargeTimer(float amount);
 
 //    void addEnergyShield(float amount);
 

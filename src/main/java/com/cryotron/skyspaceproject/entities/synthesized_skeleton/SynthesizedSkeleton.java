@@ -1,8 +1,6 @@
 package com.cryotron.skyspaceproject.entities.synthesized_skeleton;
 
-import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredAttributes;
-import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredSounds;
-import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -29,29 +27,29 @@ public class SynthesizedSkeleton extends AbstractSkeleton {
 	   public static AttributeSupplier.Builder createAttributes() {
 		      return Monster.createMonsterAttributes()
 		    		  .add(Attributes.MAX_HEALTH, 20.0D)
-		    		  .add(RegisteredAttributes.EVASION.get(), 20.0D)
+		    		  .add(SkyspaceRegistration.EVASION.get(), 20.0D)
 		    		  .add(Attributes.FOLLOW_RANGE, 32.0D)
 		    		  .add(Attributes.MOVEMENT_SPEED, (double)0.20F);
 		   }
 	
 	   @Override
 	   public SoundEvent getAmbientSound() {
-		   return RegisteredSounds.ENTITY_KYROSIAN_SKELETON_AMBIENT.get();
+		   return SkyspaceRegistration.ENTITY_KYROSIAN_SKELETON_AMBIENT.get();
 	   }
 
 	   @Override
 	   public SoundEvent getHurtSound(DamageSource p_34404_) {
-		   return RegisteredSounds.ENTITY_KYROSIAN_SKELETON_HURT.get();
+		   return SkyspaceRegistration.ENTITY_KYROSIAN_SKELETON_HURT.get();
 	   }
 
 	   @Override
 	   public SoundEvent getDeathSound() {
-		   return RegisteredSounds.ENTITY_KYROSIAN_SKELETON_DEATH.get();
+		   return SkyspaceRegistration.ENTITY_KYROSIAN_SKELETON_DEATH.get();
 	   }
 	   
 	   @Override
 	   public SoundEvent getStepSound() {
-		   return RegisteredSounds.ENTITY_KYROSIAN_SKELETON_STEP.get();
+		   return SkyspaceRegistration.ENTITY_KYROSIAN_SKELETON_STEP.get();
 	   }
 
 

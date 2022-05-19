@@ -1,16 +1,15 @@
 package com.cryotron.skyspaceproject.worldgen.structures;
 
-import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredBlocks;
-import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 
 public class KyrosianIntersectionManual {
-	private static final BlockState kyrosian = RegisteredBlocks.KYROSIAN_TILE_BLOCK.get().defaultBlockState();
-	private static final BlockState kyrosianGlass = RegisteredBlocks.KYROSIAN_GLASS_BLOCK.get().defaultBlockState();
-	private static final BlockState kyrosianFrame = RegisteredBlocks.KYROSIAN_EDGE_BLOCK.get().defaultBlockState();
+	private static final BlockState kyrosian = SkyspaceRegistration.KYROSIAN_TILE_BLOCK.get().defaultBlockState();
+	private static final BlockState kyrosianGlass = SkyspaceRegistration.KYROSIAN_GLASS_BLOCK.get().defaultBlockState();
+	private static final BlockState kyrosianFrame = SkyspaceRegistration.KYROSIAN_EDGE_BLOCK.get().defaultBlockState();
 
 	public static void genIntersection(int x, int y, int z, ChunkAccess chunk, BlockPos.MutableBlockPos pos) {
 		for(int xx = 0; xx < 16; xx++) {

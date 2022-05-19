@@ -1,8 +1,8 @@
 package com.cryotron.skyspaceproject.worldgen.structures;
 
 import com.cryotron.skyspaceproject.Skyspace;
-import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredStructures;
-import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.SSStructures;
+import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;

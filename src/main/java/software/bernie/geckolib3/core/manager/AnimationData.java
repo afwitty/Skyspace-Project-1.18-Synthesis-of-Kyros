@@ -16,7 +16,6 @@ import java.util.HashMap;
 public class AnimationData
 {
 	private HashMap<String, Pair<IBone, BoneSnapshot>> boneSnapshotCollection;
-	@SuppressWarnings("rawtypes")
 	private HashMap<String, AnimationController> animationControllers = new HashMap<>();
 	public double tick;
 	public boolean isFirstTick = true;

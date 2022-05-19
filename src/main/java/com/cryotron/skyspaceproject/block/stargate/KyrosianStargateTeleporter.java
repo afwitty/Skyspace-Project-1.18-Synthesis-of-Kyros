@@ -33,8 +33,7 @@ import java.util.function.Function;
 import java.util.Optional;
 import java.util.Comparator;
 
-import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredBlocks;
-import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 import com.google.common.collect.ImmutableSet;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -46,7 +45,7 @@ public class KyrosianStargateTeleporter implements ITeleporter {
 	public static void registerPointOfInterest(RegistryEvent.Register<PoiType> event) {
 		poi = new PoiType("kyrosian_stargate",
 				com.google.common.collect.Sets
-						.newHashSet(ImmutableSet.copyOf(RegisteredBlocks.KYROSIAN_STARGATE_BLOCK.get().getStateDefinition().getPossibleStates())),
+						.newHashSet(ImmutableSet.copyOf(SkyspaceRegistration.KYROSIAN_STARGATE_BLOCK.get().getStateDefinition().getPossibleStates())),
 				0, 1).setRegistryName("kyrosian_stargate");
 		ForgeRegistries.POI_TYPES.register(poi);
 	}
@@ -148,7 +147,7 @@ public class KyrosianStargateTeleporter implements ITeleporter {
 			for (int i3 = -1; i3 < 2; ++i3) {
 				for (int j3 = 0; j3 < 2; ++j3) {
 					for (int k3 = -1; k3 < 3; ++k3) {
-						BlockState blockstate1 = k3 < 0 ? RegisteredBlocks.KYROSIAN_STARGATE_FRAME.get().defaultBlockState() : Blocks.AIR.defaultBlockState();
+						BlockState blockstate1 = k3 < 0 ? SkyspaceRegistration.KYROSIAN_STARGATE_FRAME.get().defaultBlockState() : Blocks.AIR.defaultBlockState();
 						blockpos$mutableblockpos.setWithOffset(blockpos, j3 * direction.getStepX() + i3 * direction1.getStepX(), k3,
 								j3 * direction.getStepZ() + i3 * direction1.getStepZ());
 						this.level.setBlockAndUpdate(blockpos$mutableblockpos, blockstate1);
@@ -160,11 +159,11 @@ public class KyrosianStargateTeleporter implements ITeleporter {
 			for (int j2 = -1; j2 < 4; ++j2) {
 				if (l1 == -1 || l1 == 2 || j2 == -1 || j2 == 3) {
 					blockpos$mutableblockpos.setWithOffset(blockpos, l1 * direction.getStepX(), j2, l1 * direction.getStepZ());
-					this.level.setBlock(blockpos$mutableblockpos, RegisteredBlocks.KYROSIAN_STARGATE_FRAME.get().defaultBlockState(), 3);
+					this.level.setBlock(blockpos$mutableblockpos, SkyspaceRegistration.KYROSIAN_STARGATE_FRAME.get().defaultBlockState(), 3);
 				}
 			}
 		}
-		BlockState blockstate = RegisteredBlocks.KYROSIAN_STARGATE_BLOCK.get().defaultBlockState().setValue(NetherPortalBlock.AXIS, p_77668_);
+		BlockState blockstate = SkyspaceRegistration.KYROSIAN_STARGATE_BLOCK.get().defaultBlockState().setValue(NetherPortalBlock.AXIS, p_77668_);
 		for (int k2 = 0; k2 < 2; ++k2) {
 			for (int l2 = 0; l2 < 3; ++l2) {
 				blockpos$mutableblockpos.setWithOffset(blockpos, k2 * direction.getStepX(), l2, k2 * direction.getStepZ());

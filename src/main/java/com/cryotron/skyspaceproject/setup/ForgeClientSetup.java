@@ -3,8 +3,6 @@ package com.cryotron.skyspaceproject.setup;
 import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.client.render.SkyspaceDimensionRender;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombieRenderer;
-import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredEntities;
-import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 import com.cryotron.skyspaceproject.entities.synthesized_skeleton.SynthesizedSkeletonRenderer;
 import com.cryotron.skyspaceproject.entities.kyrosian_archon.KyrosianArchonRenderer;
 import com.cryotron.skyspaceproject.entities.kyrosian_enforcer.KyrosianEnforcerRenderer;
@@ -31,12 +29,12 @@ public class ForgeClientSetup {
 
     @SubscribeEvent
     public static void onRegisterRenderer(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(RegisteredEntities.SYNTHESIZED_ZOMBIE.get(), SynthesizedZombieRenderer::new);
-        event.registerEntityRenderer(RegisteredEntities.SYNTHESIZED_SKELETON.get(), SynthesizedSkeletonRenderer::new);
-        event.registerEntityRenderer(RegisteredEntities.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
-        event.registerEntityRenderer(RegisteredEntities.KYROSIAN_ENFORCER.get(), KyrosianEnforcerRenderer::new);
-        event.registerEntityRenderer(RegisteredEntities.KYROSIAN_MUTILATOR.get(), KyrosianMutilatorRenderer::new);
-        event.registerEntityRenderer(RegisteredEntities.KYROSIAN_DEACON.get(), KyrosianDeaconRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), SynthesizedZombieRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), SynthesizedSkeletonRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_ARCHON.get(), KyrosianArchonRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_ENFORCER.get(), KyrosianEnforcerRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_MUTILATOR.get(), KyrosianMutilatorRenderer::new);
+        event.registerEntityRenderer(SkyspaceRegistration.KYROSIAN_DEACON.get(), KyrosianDeaconRenderer::new);
         
     }
 

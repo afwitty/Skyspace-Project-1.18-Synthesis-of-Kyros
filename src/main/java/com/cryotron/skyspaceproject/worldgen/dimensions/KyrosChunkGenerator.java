@@ -1,8 +1,8 @@
 package com.cryotron.skyspaceproject.worldgen.dimensions;
 
 import com.cryotron.skyspaceproject.Skyspace;
-import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredBlocks;
-import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
+
+import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 import com.cryotron.skyspaceproject.worldgen.structures.KyrosianChunkCubeManual;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -58,7 +58,7 @@ public class KyrosChunkGenerator extends ChunkGenerator {
 	
 	@Override
 	public void buildSurface(WorldGenRegion region, StructureFeatureManager featureManager, ChunkAccess chunk) {
-		BlockState kyrosian = RegisteredBlocks.KYROSIAN_GLASS_BLOCK.get().defaultBlockState();
+		BlockState kyrosian = SkyspaceRegistration.KYROSIAN_GLASS_BLOCK.get().defaultBlockState();
 //		BlockState kyrosianFrame = SkyspaceRegistration.KYROSIAN_EDGE_BLOCK.get().defaultBlockState();
 //		BlockState debugBlock = Blocks.STONE.defaultBlockState();
 		BlockState air = Blocks.AIR.defaultBlockState();

@@ -7,13 +7,6 @@
   "item.skyspaceproject.kyrosian_deacon": "Deacon Spawn Egg",
   "item.skyspaceproject.flint_and_rune": "Flint and Rune",
 
-  "item.skyspaceproject.ruby": "Ruby",
-  "item.skyspaceproject.sapphire": "Sapphire",
-  "item.skyspaceproject.topaz": "Topaz",
-  "item.skyspaceproject.jade": "Jade",
-  "item.skyspaceproject.opal": "Opal",
-  "item.skyspaceproject.onyx": "Onyx",
-
   "block.skyspaceproject.kyrosian_tile_block": "Kyrosian Tile Block",
   "block.skyspaceproject.kyrosian_glass_block": "Kyrosian Glass Block",
   "block.skyspaceproject.kyrosian_edge_block": "Kyrosian Edge Block",
@@ -21,27 +14,6 @@
   "block.skyspaceproject.kyrosian_glass_stairs": "Kyrosian Glass Stairs",
   "block.skyspaceproject.kyrosian_edge_stairs": "Kyrosian Edge Stairs",
   "block.skyspaceproject.kyrosian_stargate_frame": "Stargate Frame",
-
-  "block.skyspaceproject.ruby_block": "Ruby Block",
-  "block.skyspaceproject.sapphire_block": "Sapphire Block",
-  "block.skyspaceproject.topaz_block": "Topaz Block",
-  "block.skyspaceproject.jade_block": "Jade Block",
-  "block.skyspaceproject.opal_block": "Opal Block",
-  "block.skyspaceproject.onyx_block": "Onyx Block",
-
-  "block.skyspaceproject.ruby_ore": "Ruby Ore",
-  "block.skyspaceproject.sapphire_ore": "Sapphire Ore",
-  "block.skyspaceproject.topaz_ore": "Topaz Ore",
-  "block.skyspaceproject.jade_ore": "Jade Ore",
-  "block.skyspaceproject.opal_ore": "Opal Ore",
-  "block.skyspaceproject.onyx_ore": "Onyx Ore",
-  
-  "block.skyspaceproject.nether_ruby_ore": "Nether Ruby Ore",
-  "block.skyspaceproject.nether_sapphire_ore": "Nether Sapphire Ore",
-  "block.skyspaceproject.nether_topaz_ore": "Nether Topaz Ore",
-  "block.skyspaceproject.nether_jade_ore": "Nether Jade Ore",
-  "block.skyspaceproject.nether_opal_ore": "Nether Opal Ore",
-  "block.skyspaceproject.nether_onyx_ore": "Nether Onyx Ore",
   
   "entity.skyspaceproject.synthesized_zombie": "Synthesized Zombie",
   "entity.skyspaceproject.synthesized_skeleton": "Synthesized Skeleton",
@@ -62,8 +34,6 @@
 
   "subtitle.ambient.stargate": "Kyrosian Stargate chimes",  
   "subtitle.ambient.kyrosloop": "Kyrosian Winds howling",
-
-  "tooltip.skyspaceproject.energy_shield_test_armor": "PLACEHOLDER",
 
   "itemGroup.skyspace_group": "Skyspace Project"  
 }

@@ -1,7 +1,6 @@
 package com.cryotron.skyspaceproject.worldgen.dimensions;
 
-import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredBiomes;
-import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Registry;
@@ -21,7 +20,7 @@ public class KyrosBiomeProvider extends BiomeSource  {
     
 
 	private static final List<ResourceKey<Biome>> KYROS_BIOMES = ImmutableList.of( //TODO: Can we do this more efficiently?
-			RegisteredBiomes.KYROS_QUADRANT_AXIS
+			SkyspaceRegistration.KYROS_QUADRANT_AXIS
 	);
 
     private final Biome biome;
@@ -32,7 +31,7 @@ public class KyrosBiomeProvider extends BiomeSource  {
         super(getStartBiomes(biomeRegistry));
         this.biomeRegistry = biomeRegistry;
               
-        biome = biomeRegistry.get(RegisteredBiomes.KYROS_QUADRANT_AXIS.location());
+        biome = biomeRegistry.get(SkyspaceRegistration.KYROS_QUADRANT_AXIS.location());
         //
     }
 
