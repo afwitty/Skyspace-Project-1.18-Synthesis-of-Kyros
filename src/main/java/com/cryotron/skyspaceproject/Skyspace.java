@@ -6,8 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.cryotron.skyspaceproject.misc.StructurePieceCountsManager;
-import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 import com.cryotron.skyspaceproject.setup.SkyspaceSetup;
+import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;

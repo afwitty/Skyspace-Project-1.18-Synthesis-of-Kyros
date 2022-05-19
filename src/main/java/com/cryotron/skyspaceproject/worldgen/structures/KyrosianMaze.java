@@ -32,8 +32,9 @@ import org.codehaus.plexus.util.StringUtils;
 
 import com.google.common.collect.ImmutableList;
 import com.cryotron.skyspaceproject.Skyspace;
-import com.cryotron.skyspaceproject.setup.SSStructures;
-import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredEntities;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredStructures;
+import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 import com.cryotron.skyspaceproject.util.GeneralUtils;
 import com.cryotron.skyspaceproject.util.Mutable;
 import com.cryotron.skyspaceproject.worldgen.structures.codeconfigs.GenericJigsawStructureCodeConfig;
@@ -1361,13 +1362,13 @@ public class KyrosianMaze extends GenericJigsawStructure {
 	}
 	
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_MONSTER = Lazy.of(() -> ImmutableList.of(
-            new MobSpawnSettings.SpawnerData(SkyspaceRegistration.SYNTHESIZED_SKELETON.get(), 200, 1, 4),
-            new MobSpawnSettings.SpawnerData(SkyspaceRegistration.SYNTHESIZED_ZOMBIE.get(), 200, 1, 4)
+            new MobSpawnSettings.SpawnerData(RegisteredEntities.SYNTHESIZED_SKELETON.get(), 200, 1, 4),
+            new MobSpawnSettings.SpawnerData(RegisteredEntities.SYNTHESIZED_ZOMBIE.get(), 200, 1, 4)
     ));
 
     
     public static void setupStructureSpawns(final StructureSpawnListGatherEvent event) {
-        if(event.getStructure() == SSStructures.KYROSIAN_MAZE.get()) {
+        if(event.getStructure() == RegisteredStructures.KYROSIAN_MAZE.get()) {
             event.addEntitySpawns(MobCategory.MONSTER, STRUCTURE_MONSTER.get());
         }
     }

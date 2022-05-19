@@ -18,13 +18,20 @@ import javax.annotation.Nonnull;
 
 public class CapabilityList {
 
+	// Entity Capabilities
+	
+	
 	public static final Capability<IEnergyShieldCapability> ENERGY_SHIELD = CapabilityManager.get(new CapabilityToken<>(){});
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
     	event.register(IEnergyShieldCapability.class);
     }
 	
-	public static void attachEntityCapability(AttachCapabilitiesEvent<Entity> e) {
+    
+    /*
+     * ATTACH ENERGY SHIELD
+     */
+	public static void attachEnergyShieldEntityCapability(AttachCapabilitiesEvent<Entity> e) {
 		if (e.getObject() instanceof LivingEntity) {
 			e.addCapability(IEnergyShieldCapability.ID, new ICapabilitySerializable<CompoundTag>() {
 
@@ -52,5 +59,5 @@ public class CapabilityList {
 			});
 		}
 	}
-	
+
 }

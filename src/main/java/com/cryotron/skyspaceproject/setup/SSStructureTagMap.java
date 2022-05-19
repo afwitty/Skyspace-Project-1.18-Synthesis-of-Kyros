@@ -9,6 +9,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredStructures;
+
 public final class SSStructureTagMap {
 
     private SSStructureTagMap() {}
@@ -21,8 +23,8 @@ public final class SSStructureTagMap {
     public static final Map<STRUCTURE_TAGS, Set<StructureFeature<?>>> REVERSED_TAGGED_STRUCTURES = new HashMap<>();
     
     public static void setupTags(){
-        addTags(SSStructures.KYROSIAN_MAZE.get(), Stream.of(STRUCTURE_TAGS.MAZE).collect(Collectors.toSet()));
-        addTags(SSStructures.KYROSIAN_NEXUS.get(), Stream.of(STRUCTURE_TAGS.NEXUS).collect(Collectors.toSet()));
+        addTags(RegisteredStructures.KYROSIAN_MAZE.get(), Stream.of(STRUCTURE_TAGS.MAZE).collect(Collectors.toSet()));
+        addTags(RegisteredStructures.KYROSIAN_NEXUS.get(), Stream.of(STRUCTURE_TAGS.NEXUS).collect(Collectors.toSet()));
     }
 	
     /**

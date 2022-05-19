@@ -1,6 +1,7 @@
 package com.cryotron.skyspaceproject.entities.kyrosian_archon;
 
-import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredAttributes;
+import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -52,7 +53,7 @@ public class KyrosianArchon extends Monster implements IAnimatable {
 	     public static AttributeSupplier.Builder createAttributes() {
 		      return Monster.createMonsterAttributes()
 		    		  .add(Attributes.MAX_HEALTH, 2.0D)
-		    		  .add(SkyspaceRegistration.MAX_ENERGY_SHIELD.get(), 200.0D)
+		    		  .add(RegisteredAttributes.MAX_ENERGY_SHIELD.get(), 200.0D)
 		    		  .add(Attributes.FOLLOW_RANGE, 32.0D)
 		    		  .add(Attributes.MOVEMENT_SPEED, (double)0.66F);	   
 		   }

@@ -2,8 +2,8 @@ package com.cryotron.skyspaceproject.worldgen.structures;
 
 import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.setup.SSConfiguredStructures;
-import com.cryotron.skyspaceproject.setup.SSStructures;
-import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredStructures;
+import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 import com.cryotron.skyspaceproject.worldgen.dimensions.Dimensions;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMap;

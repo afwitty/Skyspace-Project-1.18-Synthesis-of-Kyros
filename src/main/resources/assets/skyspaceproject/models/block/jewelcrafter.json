@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "skyspaceproject:block/jewelcraftingtable_side",
+        "down": "skyspaceproject:block/jewelcraftingtable_bot",
+        "up": "skyspaceproject:block/jewelcraftingtable_top",
+        "north": "skyspaceproject:block/jewelcraftingtable_side",
+        "east": "skyspaceproject:block/jewelcraftingtable_side",
+        "south": "skyspaceproject:block/jewelcraftingtable_side",
+        "west": "skyspaceproject:block/jewelcraftingtable_side"
+    }
+}
