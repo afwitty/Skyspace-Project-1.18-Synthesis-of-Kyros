@@ -15,8 +15,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.BlockUtil;
 
-import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
 import javax.annotation.Nullable;
+
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredBlocks;
+import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 
 import java.util.function.Predicate;
 import java.util.Optional;
@@ -27,7 +29,7 @@ public class KyrosianStargateShape {
 	private static final int MIN_HEIGHT = 3;
 	public static final int MAX_HEIGHT = 21;
 	private static final BlockBehaviour.StatePredicate FRAME = (p_77720_, p_77721_, p_77722_) -> {
-		return p_77720_.getBlock() == SkyspaceRegistration.KYROSIAN_STARGATE_FRAME.get();
+		return p_77720_.getBlock() == RegisteredBlocks.KYROSIAN_STARGATE_FRAME.get();
 	};
 	private final LevelAccessor level;
 	private final Direction.Axis axis;
@@ -138,7 +140,7 @@ public class KyrosianStargateShape {
 				if (!isEmpty(blockstate)) {
 					return i;
 				}
-				if (blockstate.getBlock() == SkyspaceRegistration.KYROSIAN_STARGATE_BLOCK.get()) {
+				if (blockstate.getBlock() == RegisteredBlocks.KYROSIAN_STARGATE_BLOCK.get()) {
 					++this.numPortalBlocks;
 				}
 			}
@@ -147,7 +149,7 @@ public class KyrosianStargateShape {
 	}
 
 	private static boolean isEmpty(BlockState p_77718_) {
-		return p_77718_.isAir() || p_77718_.getBlock() == SkyspaceRegistration.KYROSIAN_STARGATE_BLOCK.get();
+		return p_77718_.isAir() || p_77718_.getBlock() == RegisteredBlocks.KYROSIAN_STARGATE_BLOCK.get();
 	}
 
 	public boolean isValid() {
@@ -155,7 +157,7 @@ public class KyrosianStargateShape {
 	}
 
 	public void createPortalBlocks() {
-		BlockState blockstate = SkyspaceRegistration.KYROSIAN_STARGATE_BLOCK.get().defaultBlockState().setValue(NetherPortalBlock.AXIS, this.axis);
+		BlockState blockstate = RegisteredBlocks.KYROSIAN_STARGATE_BLOCK.get().defaultBlockState().setValue(NetherPortalBlock.AXIS, this.axis);
 		BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1))
 				.forEach((p_77725_) -> {
 					this.level.setBlock(p_77725_, blockstate, 18);

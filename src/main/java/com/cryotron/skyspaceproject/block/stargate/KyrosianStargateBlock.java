@@ -4,7 +4,9 @@ package com.cryotron.skyspaceproject.block.stargate;
 import org.checkerframework.checker.units.qual.s;
 
 import com.cryotron.skyspaceproject.Skyspace;
-import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredParticles;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredSounds;
+import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 import com.cryotron.skyspaceproject.worldgen.dimensions.Dimensions;
 
 import net.minecraftforge.registries.ForgeRegistries;
@@ -71,7 +73,7 @@ public class KyrosianStargateBlock extends NetherPortalBlock {
 	@Override
 	public void animateTick(BlockState state, Level world, BlockPos pos, Random random) {
 	      if (random.nextInt(100) == 0) {
-	    	  world.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SkyspaceRegistration.AMBIENT_STARGATE.get(), SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false);
+	    	  world.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, RegisteredSounds.AMBIENT_STARGATE.get(), SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, false);
 	      }
 		
 		for (int i = 0; i < 4; i++) {
@@ -89,7 +91,7 @@ public class KyrosianStargateBlock extends NetherPortalBlock {
 				pz = pos.getZ() + 0.5 + 0.25 * j;
 				vz = random.nextFloat() * 2 * j;
 			}
-			world.addParticle(SkyspaceRegistration.ENERGY_SHIELD_DAMAGE_INDICATOR.get(), px, py, pz, vx, vy, vz);
+			world.addParticle(RegisteredParticles.ENERGY_SHIELD_DAMAGE_INDICATOR.get(), px, py, pz, vx, vy, vz);
 		}
 		if (random.nextInt(110) == 0)
 			world.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,

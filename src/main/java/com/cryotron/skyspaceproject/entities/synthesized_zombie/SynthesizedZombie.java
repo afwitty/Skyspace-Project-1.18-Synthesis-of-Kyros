@@ -1,6 +1,8 @@
 package com.cryotron.skyspaceproject.entities.synthesized_zombie;
 
-import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredAttributes;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredSounds;
+import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -22,7 +24,7 @@ public class SynthesizedZombie extends Zombie {
 	   public static AttributeSupplier.Builder createAttributes() {
 		      return Monster.createMonsterAttributes()
 		    		  .add(Attributes.MAX_HEALTH, 20.0D)
-		    		  .add(SkyspaceRegistration.MAX_ENERGY_SHIELD.get(), 20.0D)
+		    		  .add(RegisteredAttributes.MAX_ENERGY_SHIELD.get(), 20.0D)
 		    		  .add(Attributes.FOLLOW_RANGE, 32.0D)
 		    		  .add(Attributes.MOVEMENT_SPEED, (double)0.20F)
 		    		  .add(Attributes.ATTACK_DAMAGE, 4.0D)
@@ -33,22 +35,22 @@ public class SynthesizedZombie extends Zombie {
 	
 	   @Override
 	   public SoundEvent getAmbientSound() {
-		   return SkyspaceRegistration.ENTITY_KYROSIAN_ZOMBIE_AMBIENT.get();
+		   return RegisteredSounds.ENTITY_KYROSIAN_ZOMBIE_AMBIENT.get();
 	   }
 
 	   @Override
 	   public SoundEvent getHurtSound(DamageSource p_34404_) {
-		   return SkyspaceRegistration.ENTITY_KYROSIAN_ZOMBIE_HURT.get();
+		   return RegisteredSounds.ENTITY_KYROSIAN_ZOMBIE_HURT.get();
 	   }
 
 	   @Override
 	   public SoundEvent getDeathSound() {
-		   return SkyspaceRegistration.ENTITY_KYROSIAN_ZOMBIE_DEATH.get();
+		   return RegisteredSounds.ENTITY_KYROSIAN_ZOMBIE_DEATH.get();
 	   }
 	   
 	   @Override
 	   public SoundEvent getStepSound() {
-		   return SkyspaceRegistration.ENTITY_KYROSIAN_ZOMBIE_STEP.get();
+		   return RegisteredSounds.ENTITY_KYROSIAN_ZOMBIE_STEP.get();
 	   }
 
 }

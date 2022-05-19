@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.cryotron.skyspaceproject.setup.SSStructureTagMap;
-import com.cryotron.skyspaceproject.setup.SSStructures;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredStructures;
 
 public class GenericJigsawStructureCodeConfig {
 
@@ -50,7 +50,7 @@ public class GenericJigsawStructureCodeConfig {
         this.cannotSpawnInWater = cannotSpawnInWater;
         this.poolsThatIgnoreBounds = poolsThatIgnoreBounds;
 
-        SSStructures.SS_STRUCTURE_START_PIECES.add(startPool);
+        RegisteredStructures.SS_STRUCTURE_START_PIECES.add(startPool);
     }
 
     public static class Builder<T extends Builder<T>> {

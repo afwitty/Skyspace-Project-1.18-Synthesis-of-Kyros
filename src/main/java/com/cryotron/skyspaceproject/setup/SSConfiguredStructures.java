@@ -14,14 +14,15 @@ import net.minecraft.data.worldgen.PlainVillagePools;
 import java.util.Objects;
 
 import com.cryotron.skyspaceproject.Skyspace;
+import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredStructures;
 
 public class SSConfiguredStructures {
 	private SSConfiguredStructures() {}
 	
-	public static ConfiguredStructureFeature<NoneFeatureConfiguration, ? extends StructureFeature<NoneFeatureConfiguration>> KYROSIAN_MAZE = SSStructures.KYROSIAN_MAZE.get().configured(FeatureConfiguration.NONE);
+	public static ConfiguredStructureFeature<NoneFeatureConfiguration, ? extends StructureFeature<NoneFeatureConfiguration>> KYROSIAN_MAZE = RegisteredStructures.KYROSIAN_MAZE.get().configured(FeatureConfiguration.NONE);
 	//public static ConfiguredStructureFeature<NoneFeatureConfiguration, ? extends StructureFeature<NoneFeatureConfiguration>> KYROSIAN_NEXUS = SSStructures.KYROSIAN_NEXUS.get().configured(FeatureConfiguration.NONE);
 	
-    public static ConfiguredStructureFeature<?, ?> KYROSIAN_NEXUS = SSStructures.KYROSIAN_NEXUS.get()
+    public static ConfiguredStructureFeature<?, ?> KYROSIAN_NEXUS = RegisteredStructures.KYROSIAN_NEXUS.get()
             .configured(new JigsawConfiguration(() -> PlainVillagePools.START, 0));
 	
     public static void registerStructureFeatures() {

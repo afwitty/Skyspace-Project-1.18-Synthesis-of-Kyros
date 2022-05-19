@@ -2,7 +2,7 @@ package com.cryotron.skyspaceproject.items;
 
 import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.block.stargate.KyrosianStargateBlock;
-import com.cryotron.skyspaceproject.setup.SkyspaceRegistration;
+import com.cryotron.skyspaceproject.setup.deferredregistries.SkyspaceRegistration;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
