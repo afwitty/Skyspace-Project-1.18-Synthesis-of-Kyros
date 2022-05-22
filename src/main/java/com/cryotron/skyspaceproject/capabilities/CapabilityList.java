@@ -8,6 +8,7 @@ import com.cryotron.skyspaceproject.capabilities.energyshield.IEnergyShieldCapab
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.Direction;
 import net.minecraftforge.common.capabilities.*;
@@ -19,8 +20,6 @@ import javax.annotation.Nonnull;
 public class CapabilityList {
 
 	// Entity Capabilities
-	
-	
 	public static final Capability<IEnergyShieldCapability> ENERGY_SHIELD = CapabilityManager.get(new CapabilityToken<>(){});
 
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -33,6 +32,7 @@ public class CapabilityList {
      */
 	public static void attachEnergyShieldEntityCapability(AttachCapabilitiesEvent<Entity> e) {
 		if (e.getObject() instanceof LivingEntity) {
+			
 			e.addCapability(IEnergyShieldCapability.ID, new ICapabilitySerializable<CompoundTag>() {
 
 				LazyOptional<IEnergyShieldCapability> inst = LazyOptional.of(() -> {

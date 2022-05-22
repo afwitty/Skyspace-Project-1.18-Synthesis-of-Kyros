@@ -7,7 +7,8 @@ import com.cryotron.skyspaceproject.Skyspace;
 import com.cryotron.skyspaceproject.capabilities.CapabilityList;
 import com.cryotron.skyspaceproject.capabilities.energyshield.IEnergyShieldCapability;
 import com.cryotron.skyspaceproject.entities.synthesized_zombie.SynthesizedZombie;
-import com.cryotron.skyspaceproject.gui.overlay.ExtraHeartRenderHandler;
+import com.cryotron.skyspaceproject.gui.overlay.EnergyShieldHandler;
+import com.cryotron.skyspaceproject.gui.overlay.HealthAndAbsorbHandler;
 import com.cryotron.skyspaceproject.networking.Messages;
 import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredAttributes;
 import com.cryotron.skyspaceproject.setup.deferredregistries.RegisteredEntities;
@@ -94,7 +95,8 @@ public class SkyspaceSetup {
     		SSConfiguredStructures.registerStructureFeatures();
 //    		MazeConfig.registerConfiguredStructures();
     		
-    		MinecraftForge.EVENT_BUS.register(new ExtraHeartRenderHandler());
+    		MinecraftForge.EVENT_BUS.register(new HealthAndAbsorbHandler());
+    		MinecraftForge.EVENT_BUS.register(new EnergyShieldHandler());
     		
             SpawnPlacements.register(RegisteredEntities.SYNTHESIZED_ZOMBIE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.WORLD_SURFACE,
                     Monster::checkAnyLightMonsterSpawnRules);

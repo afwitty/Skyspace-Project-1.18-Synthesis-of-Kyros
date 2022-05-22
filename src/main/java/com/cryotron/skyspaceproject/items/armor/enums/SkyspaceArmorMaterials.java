@@ -14,7 +14,7 @@ public enum SkyspaceArmorMaterials implements ArmorMaterial {
 			NONE("none", 1, new int[]{0, 0, 0, 0}, new int[] {0,0,0,0}, 1, SoundEvents.ARMOR_EQUIP_GENERIC, 0.0F, 0.0F, () -> {
 		      return Ingredient.of(Items.LAPIS_LAZULI);
 		   }),
-			TEST("test", 33, new int[]{0, 0, 0, 0}, new int[] {3,6,16,3}, 12, SoundEvents.ARMOR_EQUIP_DIAMOND, 0.0F, 0.0F, () -> {
+			TEST("test", 33, new int[]{0, 0, 0, 0}, new int[] {3,6,32,3}, 12, SoundEvents.ARMOR_EQUIP_DIAMOND, 0.0F, 0.0F, () -> {
 			  return Ingredient.of(Items.DIAMOND);
 		    });
 

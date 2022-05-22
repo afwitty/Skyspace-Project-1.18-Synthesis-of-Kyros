@@ -22,7 +22,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.Random;
 
-public class ExtraHeartRenderHandler {
+public class HealthAndAbsorbHandler {
 	  private static final ResourceLocation ICON_HEARTS = new ResourceLocation(Skyspace.ID, "textures/gui/mantlehearts.png");
 	  private static final ResourceLocation ICON_ABSORB = new ResourceLocation(Skyspace.ID, "textures/gui/mantleabsorb.png");
 	  private static final ResourceLocation ICON_VANILLA = GuiComponent.GUI_ICONS_LOCATION;
@@ -186,13 +186,14 @@ public class ExtraHeartRenderHandler {
 	      gui.left_height += 10;
 	    }
 
-	    event.setCanceled(true);
+	    //event.setCanceled(true);
 	    RenderSystem.disableBlend();
 	    this.mc.getProfiler().pop();
 	    MinecraftForge.EVENT_BUS.post(new RenderGameOverlayEvent.PostLayer(matrixStack, event, ForgeIngameGui.PLAYER_HEALTH_ELEMENT));
+	  
 	  }
-
-	  /**
+	  
+	/**
 	   * Gets the texture from potion effects
 	   * @param player  Player instance
 	   * @return  Texture offset for potion effects

@@ -56,7 +56,7 @@ public class EnergyShieldCapabilityHandler implements IEnergyShieldCapability {
 	@Override
 	public void deserializeNBT(CompoundTag nbt) {
 		this.setEnergyShield(nbt.getFloat("energy_shield"));
-		this.setEnergyShield(nbt.getFloat("energy_shield_recharge_timer"));
+		this.setEnergyShieldRechargeTimer(nbt.getFloat("energy_shield_recharge_timer"));
 	}
 
 
