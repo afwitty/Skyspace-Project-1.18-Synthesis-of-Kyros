@@ -50,7 +50,7 @@ public class MazeConfig {
 		chunkDistance = builder
 				.comment("\n Average distance between spawn attempts for Maze Piecess.",
 						" 1 for spawning in most chunks and 10001 for none.")
-				.translation("repurposedstructures.citiesoverworldaveragechunkdistance")
+				.translation("skyspaceproject.citiesoverworldaveragechunkdistance")
 				.defineInRange("citiesOverworldAverageChunkDistance", 180, 1, 1);
 	}
 }
