@@ -13,16 +13,16 @@ import java.util.List;
 @Mixin(StructureTemplatePool.class)
 public interface StructurePoolAccessor {
     @Accessor("rawTemplates")
-    List<Pair<StructurePoolElement, Integer>> repurposedstructures_getRawTemplates();
+    List<Pair<StructurePoolElement, Integer>> skyspace_getRawTemplates();
 
     @Mutable
     @Accessor("rawTemplates")
-    void repurposedstructures_setRawTemplates(List<Pair<StructurePoolElement, Integer>> elementCounts);
+    void skyspace_setRawTemplates(List<Pair<StructurePoolElement, Integer>> elementCounts);
 
     @Accessor("templates")
-    List<StructurePoolElement> repurposedstructures_getTemplates();
+    List<StructurePoolElement> skyspace_getTemplates();
 
     @Mutable
     @Accessor("templates")
-    void repurposedstructures_setTemplates(List<StructurePoolElement> elements);
+    void skyspace_setTemplates(List<StructurePoolElement> elements);
 }

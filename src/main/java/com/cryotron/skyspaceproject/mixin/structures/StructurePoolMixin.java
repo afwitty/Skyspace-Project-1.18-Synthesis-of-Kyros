@@ -10,8 +10,9 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class StructurePoolMixin {
     /**
      * Increases the weight limit that mojang slapped on that was a workaround for https://bugs.mojang.com/browse/MC-203131
-     * @author - TelepathicGrunt
+     * @author - TelepathicGrunt (Adjusted by Cryotron)
      * @return - The higher weight that is a more reasonable limit.
+     * 
      */
     @ModifyConstant(
             method = "lambda$static$1",
@@ -19,13 +20,13 @@ public class StructurePoolMixin {
             remap = false,
             require = 0
     )
-    private static int repurposedstructures_increaseWeightLimitDev(int constant) {
+    private static int skyspace_increaseWeightLimitDev(int constant) {
         return 5000;
     }
 
     /**
      * Increases the weight limit that mojang slapped on that was a workaround for https://bugs.mojang.com/browse/MC-203131
-     * @author - TelepathicGrunt
+     * @author - TelepathicGrunt (Adjusted by Cryotron)
      * @return - The higher weight that is a more reasonable limit.
      */
     @ModifyConstant(
@@ -34,7 +35,7 @@ public class StructurePoolMixin {
             remap = false,
             require = 0
     )
-    private static int repurposedstructures_increaseWeightLimitProd(int constant) {
+    private static int skyspace_increaseWeightLimitProd(int constant) {
         return 5000;
     }
 }

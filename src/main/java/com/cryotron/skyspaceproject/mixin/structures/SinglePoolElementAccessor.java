@@ -14,8 +14,8 @@ import java.util.function.Supplier;
 @Mixin(SinglePoolElement.class)
 public interface SinglePoolElementAccessor {
     @Accessor("template")
-    Either<ResourceLocation, StructureTemplate> repurposedstructures_getTemplate();
+    Either<ResourceLocation, StructureTemplate> skyspace_getTemplate();
 
     @Accessor("processors")
-    Supplier<StructureProcessorList> repurposedstructures_getProcessors();
+    Supplier<StructureProcessorList> skyspace_getProcessors();
 }
