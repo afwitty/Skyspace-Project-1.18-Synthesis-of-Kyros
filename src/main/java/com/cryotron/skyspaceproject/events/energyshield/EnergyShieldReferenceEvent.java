@@ -32,4 +32,18 @@ public class EnergyShieldReferenceEvent {
 			
 		});
 	}
+	
+	/*
+	 * TODO:
+	 * 		- OPTIONAL: Targeted debugging tool to showcase attributes and data.
+	 * 		- MODIFICATION: Monster ES Recharge Timer: From 4 to all Living Entities to 7 for all Living Entities that is not a player (EXPANSION: or boss).
+	 * 			> EXPANSION: Boss ES Recharge Timer: From 4 to all Living Entities to 12 for all Boss Entities.
+	 * 		- MODIFICATION: Monster ES Recharge Recovery Rate: When N is MaxES for each living entity, from N/3 per second to all Living Entities to N/6 to all Living Entities that is not a player (EXPANSION: or boss).
+	 * 			> EXPANSION: Boss ES Recharge Recovery Rate: From N/3 to all Living Entities to N/12 for all Boss Entities.
+	 * 		- IMPLEMENTATION: Showcase Recharge Timer below hexes in Client-side.
+	 * 		- IMPLEMENTATION: Two Attributes - #% Faster Start of Energy Shield Recharge & #% Increased Energy Shield Recharge Rate
+	 * 		- ADJUSTMENT: Shield Damage Indicator only on Client-Side instead of Server-Side.
+	 * 		- ADJUSTMENT: Damage done to shields make Living Entities glow blue instead of red and shield damaging sounds emits. 
+	 */
+	
 }
