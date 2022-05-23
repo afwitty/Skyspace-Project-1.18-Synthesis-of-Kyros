@@ -13,11 +13,11 @@ import java.util.function.Supplier;
 public final class JSONConditionsRegistry {
     private JSONConditionsRegistry() {}
 
-    public static final ResourceKey<Registry<Supplier<Boolean>>> RS_JSON_CONDITIONS_KEY = ResourceKey.createRegistryKey(new ResourceLocation(Skyspace.ID, "json_conditions"));
-    public static final Registry<Supplier<Boolean>> RS_JSON_CONDITIONS_REGISTRY = createRegistry(RS_JSON_CONDITIONS_KEY);
+    public static final ResourceKey<Registry<Supplier<Boolean>>> SS_JSON_CONDITIONS_KEY = ResourceKey.createRegistryKey(new ResourceLocation(Skyspace.ID, "json_conditions"));
+    public static final Registry<Supplier<Boolean>> SS_JSON_CONDITIONS_REGISTRY = createRegistry(SS_JSON_CONDITIONS_KEY);
 
     public static void registerTestJSONCondition() {
-        // Registers a condition for testing purposes.
+        // RegisteSS a condition for testing purposes.
         Registry.REGISTRY.getOptional(new ResourceLocation(Skyspace.ID, "json_conditions"))
             .ifPresent(registry -> Registry.register(
                 (Registry<Supplier<Boolean>>)registry,

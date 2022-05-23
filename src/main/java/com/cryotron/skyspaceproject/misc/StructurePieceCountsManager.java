@@ -26,7 +26,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
     private final Map<ResourceLocation, Map<ResourceLocation, Integer>> cachedMaxCountPiecesMap = new HashMap<>();
 
     public StructurePieceCountsManager() {
-        super(GSON, "rs_pieces_spawn_counts");
+        super(GSON, "ss_pieces_spawn_counts");
     }
 
     @MethodsReturnNonnullByDefault
@@ -38,7 +38,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
                 throw new Exception("Error: Found " + entry.nbtPieceName + " entry has alwaysSpawnThisMany greater than neverSpawnMoreThanThisMany which is invalid.");
             }
             if(entry.condition != null) {
-                Optional<Supplier<Boolean>> optionalSupplier = JSONConditionsRegistry.RS_JSON_CONDITIONS_REGISTRY.getOptional(new ResourceLocation(entry.condition));
+                Optional<Supplier<Boolean>> optionalSupplier = JSONConditionsRegistry.SS_JSON_CONDITIONS_REGISTRY.getOptional(new ResourceLocation(entry.condition));
                 optionalSupplier.ifPresentOrElse(condition -> {
                     if(!condition.get()) {
                         piecesSpawnCounts.remove(entry);
@@ -58,7 +58,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
                 mapBuilder.put(fileIdentifier, getStructurePieceCountsObjs(jsonElement));
             }
             catch (Exception e) {
-                Skyspace.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", fileIdentifier, jsonElement, e);
+                Skyspace.LOGGER.error("Skyspace Error: Couldn't parse ss_pieces_spawn_counts file {} - JSON looks like: {}", fileIdentifier, jsonElement, e);
             }
         });
         this.StructureToPieceCountsObjs = mapBuilder;
@@ -72,7 +72,7 @@ public class StructurePieceCountsManager extends SimpleJsonResourceReloadListene
                 this.StructureToPieceCountsObjs.computeIfAbsent(structureRL, rl -> new ArrayList<>()).addAll(getStructurePieceCountsObjs(jsonElement));
             }
             catch (Exception e) {
-                Skyspace.LOGGER.error("Repurposed Structures Error: Couldn't parse rs_pieces_spawn_counts file {} - JSON looks like: {}", structureRL, jsonElement, e);
+                Skyspace.LOGGER.error("Skyspace Error: Couldn't parse ss_pieces_spawn_counts file {} - JSON looks like: {}", structureRL, jsonElement, e);
             }
         });
     }
